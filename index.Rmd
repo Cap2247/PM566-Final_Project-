@@ -11,7 +11,7 @@ This is my PM566 Final Project website.
 
 <br>
 
-```{r setup, message=FALSE, echo, warning=FALSE}
+```{r, message=FALSE, echo=FALSE, warning=FALSE}
 # Initialize code chunk options
 opts_chunk$set(
   warning = FALSE,
