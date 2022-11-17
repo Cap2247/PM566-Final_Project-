@@ -13,7 +13,7 @@ This is my PM566 Final Project website.
 
 ```{r, message=FALSE, echo=FALSE, warning=FALSE}
 # Initialize code chunk options
-opts_chunk$set(
+knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   eval=TRUE,
