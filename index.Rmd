@@ -1,5 +1,5 @@
 ---
-title: "Mental health service utilization during COVID-19 Pandemic"
+title: "Mental health service utilization during COVID-19 pandemic"
 author: "Camille Parchment"
 output: 
     html_document:
@@ -36,15 +36,17 @@ library(knitr)
 
 # Introduction
   
-During the COVID-19 pandemic, mental health services were disrupted, causing profound consequences for individuals in need of consistent mental health care. The pandemic exacerbated the need for mental health services which expanded an existing unmet demand. In addition to a shortage of mental health professionals, mental health providers needed to adjust service delivery to comply with safety protocols, which further inhibited access to care for some individuals. Further, at the onset of the pandemic, several state and local governments issued stay-at-home orders to reduce viral spread. 
+During the COVID-19 pandemic, mental health services were disrupted, causing profound consequences for individuals in need of consistent mental health care. The conditions of the pandemic i.e., stay at home orders, widespread layoffs, a decrease of mental health providers, and changes to healthcare delivery to comply with safety protocols, may have decreased access to necessary mental health services during the COVID-19 pandemic.
 
-Employers are the leading providers of health insurance in the United States, suggesting that newly unemployed individuals may have lost access to secure healthcare coverage. The growing demand for mental health services, possible reduction in coverage, and changing delivery systems, may have decreased access to necessary mental health services during the COVID-19 pandemic.
-
-Therefore, the primary aim of this study is to establish insurance-related patterns of mental healthcare utilization. Specifically, did the absence of health insurance decrease access to mental health services during the COVID-19 pandemic?
+Therefore, the primary aim of this study is to establish insurance-related patterns of mental healthcare utilization during October 28, 2021 – November 9, 2021. Specifically, did the type of health insurance affect access to mental health services during the COVID-19 pandemic?
 
 # Data 
 
-The Household Pulse Survey (HPS) is a self-report online survey which measures in real time the social and economic impacts of the COVID-19 pandemic. In this study we analyzed HPS data from week 18,  October 28, 2021 – November 9, 2021. 
+The Household Pulse Survey (HPS) is a self-report online survey which measures in real time the social and economic impacts of the COVID-19 pandemic. In this study we analyzed HPS data from week 18,  October 28, 2021 – November 9, 2021.
+
+The primary question to establish receipt of mental health services is "at any time in the last 4 weeks, did you need counseling or therapy from a mental health professional, but DID NOT GET IT for any reason?"
+
+Mental health services are defined as counseling or therapy.
 
 # Study Sample
 
@@ -138,7 +140,7 @@ fig <- fig  %>% layout (title = "Rate of total mental health services requested 
 
 ## Plots {.tabset}
 
-The following plots depict the rates and counts of mental health services that were not received by state,insurance type and income.
+The following plots depict the rates and counts of mental health services that were requested and not received by state, insurance type and income.
 
 ### Services not received <br> by income
 ```{r echo= FALSE}
