@@ -47,13 +47,13 @@ MHdf_2 <- na.omit(MHdf_2)
 ```
 
 ```{r}
-MHdf_2$income <- ifelse(MHdf_2$INCOME == "1", "< $25K",
-                        ifelse(MHdf_2$INCOME == "2", "$25K - $34.9K",
-                        ifelse(MHdf_2$INCOME == "3", "$35K - $49.9K",
-                        ifelse(MHdf_2$INCOME == "4", "$50K - $74.9K",
-                        ifelse(MHdf_2$INCOME == "5", "$75K - $99.9K", 
-                        ifelse(MHdf_2$INCOME == "6", "$100K - $149.9K",
-                        ifelse(MHdf_2$INCOME == "7", "$150K - $199.9K", ">$199.9K") 
+MHdf_2$income <- ifelse(MHdf_2$INCOME == "1", " 25K and below",
+                        ifelse(MHdf_2$INCOME == "2", "25K - 34.9K",
+                        ifelse(MHdf_2$INCOME == "3", "35K - 49.9K",
+                        ifelse(MHdf_2$INCOME == "4", "50K - 74.9K",
+                        ifelse(MHdf_2$INCOME == "5", "75K - 99.9K", 
+                        ifelse(MHdf_2$INCOME == "6", "100K - 149.9K",
+                        ifelse(MHdf_2$INCOME == "7", "150K - 199.9K", "199.9K and above") 
                           
                         ))))))
 ```
@@ -319,29 +319,29 @@ income.data <- DF_income_Pri %>%
   left_join(DF_income_Pub, by = c("income"))            
 ```
 
+
 ```{r}
 
 income.data$hover_pri <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.x, "rate"))
 income.data$hover_pub <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.y, "rate"))
+
 
 income <- income.data %>%plot_ly
 income <- income %>% add_trace(x = ~income.data$income, y = ~income.data$num_notrec.x, 
                                 type = 'bar',
                                 name = 'Private Insurance',
                                 text = income.data$hover_pri,
-                                color = 'Blue')
+                                color = 'rgb(158,202,225)')
 income <- income %>% add_trace( x= ~income.data$income, y= ~income.data$num_notrec.y, 
                                 type = 'bar',
                                 name = "Public Insurance",
                                 text = income.data$hover_pub,
-                                color = 'Purple')
+                                color = 'rgb(8,48,107)')
 
 income <- income %>% layout( title = 'Mental health services requested and not recived by income and insurance type',
                              yaxis = list( title = 'Number of services requested and not received'), barmode = 'group',
-                             xaxis = list (title = "Income"),
-                             color = ~income.data$Notrec_rate.x,
-                             color = ~income.data$Notrec_rate.y,
-                            colors = "Blues")
+                             xaxis = list (title = "Income"))
+                             
 income
 ```
 

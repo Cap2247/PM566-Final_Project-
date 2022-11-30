@@ -42,7 +42,8 @@ Therefore, the primary aim of this study is to establish insurance-related patte
 
 # Data 
 
-The Household Pulse Survey (HPS) is a self-report online survey which measures in real time the social and economic impacts of the COVID-19 pandemic. In this study we analyzed HPS data from week 18,  October 28, 2021 – November 9, 2021.
+The Household Pulse Survey (HPS) is a self-report online survey which measures in real time the social and economic impacts of the COVID-19 pandemic. In this study we analyzed HPS data from week 18,  October 28, 2021 – November 9, 2021. 
+Here is a link to the data https://www.census.gov/programs-surveys/household-pulse-survey/datasets.html#phase3
 
 The primary question to establish receipt of mental health services is "at any time in the last 4 weeks, did you need counseling or therapy from a mental health professional, but DID NOT GET IT for any reason?"
 
@@ -140,7 +141,7 @@ fig <- fig  %>% layout (title = "Rate of total mental health services requested 
 
 
 
-## Plots {.tabset}
+## Results {.tabset}
 
 The following plots depict the rates and counts of mental health services that were requested and not received by state, insurance type and income.
 
