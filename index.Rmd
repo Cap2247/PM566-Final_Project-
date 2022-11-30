@@ -74,17 +74,29 @@ public.insurance <- public.insurance %>% layout(title = 'Mental health services 
                                                 xaxis = list(title = 'Total services requested'),
                                                 yaxis = list(title = 'Number of services not recived'))
 
- income <- plot_ly(x = ~income.data$income, y = ~income.data$num_notrec.x, 
-                   type = 'bar',
-                   name = 'Private Insurance')
-income <- income %>% add_trace( y= ~income.data$num_notrec.y, name = "Public Insurance" )
+ income.data$hover_pri <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.x, "rate"))
+income.data$hover_pub <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.y, "rate"))
+
+income <- income.data %>%plot_ly
+income <- income %>% add_trace(x = ~income.data$income, y = ~income.data$num_notrec.x, 
+                                type = 'bar',
+                                name = 'Private Insurance',
+                                text = income.data$hover_pri,
+                                color = 'Blue')
+income <- income %>% add_trace( x= ~income.data$income, y= ~income.data$num_notrec.y, 
+                                type = 'bar',
+                                name = "Public Insurance",
+                                text = income.data$hover_pub,
+                                color = 'Purple')
+
 income <- income %>% layout( title = 'Mental health services requested and not recived by income and insurance type',
-                             yaxis = list( title = 'Number of services requested and not received'), barmode = 'group',
+                             yaxis = list( title = 'Number of services requested <br> and not received'), barmode = 'group',
                              xaxis = list (title = "Income"),
-                             color = ~income,
+                             color = ~income.data$Notrec_rate.x,
+                             color = ~income.data$Notrec_rate.y,
                             colors = "Blues")
 
-map.data$hover <- with(map.data, paste(state, '<br>', tot.notrec.rate, " % services not received " ))
+map.data$hover <- with(map.data, paste(" total services requested", '<br>', state, '<br>', tot.svs.notrec, "total services not received", '<br>',  tot.notrec.rate, " % services not received "  ))
 
 
 
@@ -123,7 +135,19 @@ fig <- fig  %>% layout (title = "Rate of total mental health services requested 
 ```
 
 
+
 ## Plots {.tabset}
+
+The following plots depict the rates and counts of mental health services that were not received by state,insurance type and income.
+
+### Services not received <br> by income
+```{r echo= FALSE}
+income 
+```
+
+This bar graph illustrates the count and rate of mental health services requested and not received in eight income categories. Among those with public insurance, individuals making less than 25k a year have the highest rate of not receiving services (19.7 %) compared to other income levels. Although individuals with private insurance who make between 100k and 150k a year have the highest count of services requested and not received, individual making less than 25k and up to 34.9k have a higher rate of not receiving services (18.92%, 18.91% respectively).
+
+Individuals who have public insurance have lower rates of not receiving services than those who have private insurance with the exception of individuals who make less than 25k a year and those who make between 35k and 49k a year. 
 
 ### Private insurance <br> by state
 
@@ -131,16 +155,15 @@ fig <- fig  %>% layout (title = "Rate of total mental health services requested 
 private.insurance
 ```
 
+This scatter plot illustrates the number of services that were requested and not received during October 28, 2021 – November 9, 2021. It can be seen that California has the highest number of mental health services that were requested and not received during the pandemic  amoung those with private insurance. 
+
 ### Public insurance <br> by state 
 
 ```{r echo=FALSE}
 public.insurance
 ```
 
-### Services not received <br> by income
-```{r echo= FALSE}
-income 
-```
+This scatter plot illustrates the number of services that were requested and not received during October 28, 2021 – November 9, 2021. It can be seen that California has the highest number of mental health services that were requested and not received during the pandemic  amoung those with public insurance. 
 
 ### Total service <br> not received
 
@@ -148,4 +171,10 @@ income
 fig
 ```
 
+This map depicts the total rate of mental health services requested and not received for individuals with both public and private insurance by state. Although California had the highest count of services not received among private and public insurance respectively, California has a lower rate of services not received than Utah (14.5), Oregon (15.8), Oklahoma (16.2),and  Vermont (14.6).
+
 ## {-}
+
+# Conclusion 
+
+These data indicate that individuals with public insurance have lower rates of not receiving services that those who have private insurance. However, individuals who make less than 25k a year have similar rates of not receiving services for both private and public insurance. Further research is needed to identify service and diagnosis-specific patterns in mental health utilization. 

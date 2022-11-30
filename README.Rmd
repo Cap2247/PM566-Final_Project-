@@ -183,7 +183,8 @@ dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   summarise(Total_sv_needed = n(),
             num_notrec = sum(MH_NOTGET)) %>%
   mutate(services_rec = Total_sv_needed - num_notrec, 
-  Notrec_rate = num_notrec/Total_sv_needed)  
+  Notrec_rate = num_notrec/Total_sv_needed * 100) 
+DF_income_Pub$Notrec_rate <- round(DF_income_Pub$Notrec_rate, digits = 2)
 ```
 
 ```{r}
@@ -194,8 +195,10 @@ dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   summarise(Total_sv_needed = n(),
             num_notrec = sum(MH_NOTGET)) %>%
   mutate(services_rec = Total_sv_needed - num_notrec, 
-  Notrec_rate = num_notrec/Total_sv_needed)
+  Notrec_rate = num_notrec/Total_sv_needed * 100)
+DF_income_Pri$Notrec_rate <- round(DF_income_Pri$Notrec_rate, digits = 2)
 ```
+
 
 ```{r}
 DF_region_Pri <- MHdf_2 %>%
@@ -317,14 +320,27 @@ income.data <- DF_income_Pri %>%
 ```
 
 ```{r}
-income <- plot_ly(x = ~income.data$income, y = ~income.data$num_notrec.x, 
-                   type = 'bar',
-                   name = 'Private Insurance')
-income <- income %>% add_trace( y= ~income.data$num_notrec.y, name = "Public Insurance" )
+
+income.data$hover_pri <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.x, "rate"))
+income.data$hover_pub <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.y, "rate"))
+
+income <- income.data %>%plot_ly
+income <- income %>% add_trace(x = ~income.data$income, y = ~income.data$num_notrec.x, 
+                                type = 'bar',
+                                name = 'Private Insurance',
+                                text = income.data$hover_pri,
+                                color = 'Blue')
+income <- income %>% add_trace( x= ~income.data$income, y= ~income.data$num_notrec.y, 
+                                type = 'bar',
+                                name = "Public Insurance",
+                                text = income.data$hover_pub,
+                                color = 'Purple')
+
 income <- income %>% layout( title = 'Mental health services requested and not recived by income and insurance type',
                              yaxis = list( title = 'Number of services requested and not received'), barmode = 'group',
                              xaxis = list (title = "Income"),
-                             color = ~income,
+                             color = ~income.data$Notrec_rate.x,
+                             color = ~income.data$Notrec_rate.y,
                             colors = "Blues")
 income
 ```
@@ -411,7 +427,7 @@ map.data$tot.notrec.rate <-  round(map.data$tot.notrec.rate, digits = 1)
 
 
 ```{r}
-map.data$hover <- with(map.data, paste(state, '<br>', tot.notrec.rate, " % services not received " ))
+map.data$hover <- with(map.data, paste(" total services requested", '<br>', state, '<br>', tot.svs.notrec, "total services not received", '<br>',  tot.notrec.rate, " % services not received " ))
 ```
 
 ```{r}
@@ -425,7 +441,7 @@ g <- list(
      lakecolor = toRGB('white')
 )
 ```
-
+ 
 
 ```{r}
 fig <- plot_geo(state_data.comp, 
@@ -436,7 +452,7 @@ fig <- plot_geo(state_data.comp,
 fig <- fig %>% add_trace (z = ~map.data$total.needed,    
            text = ~map.data$hover,
        locations = ~map.data$usa_state_code,
-           color = ~map.data$Notrec_rate,
+           color = ~map.data$total.needed,
           colors = 'Purples' )
 
               
