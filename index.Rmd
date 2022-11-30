@@ -61,6 +61,7 @@ private.insurance <- DF4 %>%
                      mode = 'markers',
                      color = ~state,
                      colors = "Purples")
+                  
 private.insurance <- private.insurance %>% layout(title = 'Mental health services requested and not recieved by state and private insurance ',
                                                 xaxis = list(title = 'Total services requested'),
                                                 yaxis = list(title = 'Number of services not recived'))
@@ -72,6 +73,7 @@ public.insurance <- DF2 %>%
                      mode = 'markers',
                      color = ~state,
                      colors = "Reds")
+                     
 public.insurance <- public.insurance %>% layout(title = 'Mental health services requested and not recieved by state and public insurance',
                                                 xaxis = list(title = 'Total services requested'),
                                                 yaxis = list(title = 'Number of services not recived'))
@@ -179,4 +181,4 @@ This map depicts the total rate of mental health services requested and not rece
 
 # Conclusion 
 
-These data indicate that individuals with public insurance have lower rates of not receiving services that those who have private insurance. However, individuals who make less than 25k a year have similar rates of not receiving services for both private and public insurance. Further research is needed to identify service and diagnosis-specific patterns in mental health utilization. 
+These data indicate that individuals with public insurance have lower rates of not receiving services that those who have private insurance. However, individuals who make less than 25k a year have similar rates of not receiving services for both private and public insurance. Further research is needed to identify service and diagnosis-specific patterns in mental health service utilization. 
