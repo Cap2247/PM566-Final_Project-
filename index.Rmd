@@ -1,5 +1,5 @@
 ---
-title: "PM566 Final Project"
+title: "Mental health service utilization during COVID-19 Pandemic"
 author: "Camille Parchment"
 output: 
     html_document:
@@ -34,7 +34,15 @@ library(DT)
 library(knitr)
 ```
 
-```{r}
+# Database 
+
+The Household Pulse Survey (HPS) is a self-report online survey which measures in real time the social and economic impacts of the COVID-19 pandemic. In this study we analyzed HPS data from week 18,  October 28, 2021 – November 9, 2021. 
+
+# Study Sample
+
+Our study sample were all individuals who needed mental health services and either received services or did not between October 28, 2021, and November 9, 2021.  Mental health services were   
+
+```{r echo=FALSE}
 source("mental_health_data.R")
 
 private.insurance <- DF4 %>% 

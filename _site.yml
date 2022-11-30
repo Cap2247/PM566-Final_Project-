@@ -1,7 +1,7 @@
 name: "my-website"
 output_dir: "."
 navbar:
-  title: "Lab 12"
+  title: "Mental Health Service Utilization"
   left:
     - text: "Home"
       href: index.html
