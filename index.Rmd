@@ -35,47 +35,101 @@ library(knitr)
 ```
 
 ```{r}
-source("process_COVID_data.R")
-p1_scatter <- cv_states_today %>% 
-  plot_ly(x = ~pop_density, y = ~deathsper100k,
-          type = 'scatter', mode = 'markers', color = ~state,
-          size = ~population, sizes = c(5, 70), marker = list(sizemode='diameter', opacity=0.5),
-          hoverinfo = 'text',
-          text = ~paste( paste(state, ":", sep=""), paste(" Cases per 100k: ", per100k, sep="") , paste(" Deaths per 100k: ",
-                        deathsper100k, sep=""), sep = "<br>")) %>%
-  layout(title = "Population-normalized COVID-19 deaths vs. population density",
-                  yaxis = list(title = "Deaths per 100k"), xaxis = list(title = "Population Density"),
-         hovermode = "compare")
+source("mental_health_data.R")
 
-# filter out "District of Columbia"
-cv_states_today_scatter <- cv_states_today %>% filter(state!="District of Columbia")
+private.insurance <- DF4 %>% 
+                     plot_ly(x = ~Total_sv_needed, y = ~num_notrec, 
+                     type = 'scatter',
+                     mode = 'markers',
+                     color = ~state,
+                     colors = "Purples")
+private.insurance <- private.insurance %>% layout(title = 'Mental health services requested and not recieved by state and private insurance ',
+                                                xaxis = list(title = 'Total services requested'),
+                                                yaxis = list(title = 'Number of services not recived'))
 
-p2_scatter <- cv_states_today_scatter %>% 
-  plot_ly(x = ~pop_density, y = ~deathsper100k,
-          type = 'scatter', mode = 'markers', color = ~state,
-          size = ~population, sizes = c(5, 70), marker = list(sizemode='diameter', opacity=0.5),
-          hoverinfo = 'text',
-          text = ~paste( paste(state, ":", sep=""), paste(" Cases per 100k: ", per100k, sep="") , paste(" Deaths per 100k: ",
-                        deathsper100k, sep=""), sep = "<br>")) %>%
-  layout(title = "Population-normalized COVID-19 deaths vs. population density",
-                  yaxis = list(title = "Deaths per 100k"), xaxis = list(title = "Population Density"),
-         hovermode = "compare")
+
+public.insurance <- DF2 %>% 
+                     plot_ly(x = ~Total_sv_needed, y = ~num_notrec, 
+                     type = 'scatter',
+                     mode = 'markers',
+                     color = ~state,
+                     colors = "Reds")
+public.insurance <- public.insurance %>% layout(title = 'Mental health services requested and not recieved by state and insurance type',
+                                                xaxis = list(title = 'Total services requested'),
+                                                yaxis = list(title = 'Number of services not recived'))
+
+ income <- plot_ly(x = ~income.data$income, y = ~income.data$num_notrec.x, 
+                   type = 'bar',
+                   name = 'Private Insurance')
+income <- income %>% add_trace( y= ~income.data$num_notrec.y, name = "Public Insurance" )
+income <- income %>% layout( title = 'Mental health services requested and not recived by income and insurance type',
+                             yaxis = list( title = 'Number of services requested and not received'), barmode = 'group',
+                             xaxis = list (title = "Income"),
+                             color = ~income,
+                            colors = "Blues")
+
+map.data$hover <- with(map.data, paste(state, '<br>', tot.notrec.rate, " % services not received " ))
+
+
+
+l <- list(color = toRGB("white"), width=2)
+
+
+g <- list(
+     scope = 'usa',
+     projection = list(type = 'albers usa'),
+     showlakes = TRUE, 
+     lakecolor = toRGB('white')
+)
+
+
+
+
+fig <- plot_geo(state_data.comp, 
+               locationmode = 'USA-states')
+
+
+
+fig <- fig %>% add_trace (z = ~map.data$total.needed,    
+           text = ~map.data$hover,
+       locations = ~map.data$usa_state_code,
+           color = ~map.data$Notrec_rate,
+          colors = 'Purples' )
+
+              
+
+
+fig <- fig  %>% layout (title = "Rate of total Mental Health Services Requested and Not Received by state and insurance",
+         geo =g )
+         
+
 
 ```
 
 
-## Showcasing plots {.tabset}
+## Plots {.tabset}
 
 ### Tab 1
 
 ```{r echo=FALSE}
-p1_scatter
+private.insurance
 ```
 
 ### Tab 2
 
 ```{r echo=FALSE}
-p2_scatter
+public.insurance
+```
+
+### Tab 3
+```{r echo= FALSE}
+income 
+```
+
+### Tab 4
+
+```{r echo=FALSE}
+fig
 ```
 
 ## {-}
