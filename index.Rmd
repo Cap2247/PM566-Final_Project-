@@ -62,7 +62,7 @@ public.insurance <- DF2 %>%
                      mode = 'markers',
                      color = ~state,
                      colors = "Reds")
-public.insurance <- public.insurance %>% layout(title = 'Mental health services requested and not recieved by state and insurance type',
+public.insurance <- public.insurance %>% layout(title = 'Mental health services requested and not recieved by state and public insurance',
                                                 xaxis = list(title = 'Total services requested'),
                                                 yaxis = list(title = 'Number of services not recived'))
 
@@ -106,8 +106,8 @@ fig <- fig %>% add_trace (z = ~map.data$total.needed,
 
               
 
-
-fig <- fig  %>% layout (title = "Rate of total Mental Health Services Requested and Not Received by state and insurance",
+fig <- fig %>% colorbar(title = 'Rate of services not received')
+fig <- fig  %>% layout (title = "Rate of total Mental Health Services Requested and Not Received <br> by state and both public and private insurance type",
          geo =g )
          
 
