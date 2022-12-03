@@ -153,15 +153,7 @@ public.insurance
 income.data <- DF_income_Pri %>%
   left_join(DF_income_Pub, by = c("income"))  
 
-income.data$income <- factor(income.data$income,
-                             levels=c(" 25K and below",
-                                      "25K - 34.9K",
-                                      "35K - 49.9K",
-                                      "50K - 74.9K",
-                                      "75K - 99.9K",
-                                      "100K - 149.9K",
-                                      "150K - 199.9K",
-                                      "199.9K and above"))
+
 
 income <- plot_ly(x = ~income.data$income, y = ~income.data$num_notrec.x, 
                   type = 'bar',
