@@ -1,5 +1,5 @@
 ---
-title: "Midterm"
+title: "Final Project"
 author: "Camille Parchment"
 date: "`r Sys.Date()`"
 output: github_document
