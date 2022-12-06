@@ -26,8 +26,9 @@ pulse18 <- fread("pulse2020_puf_18.csv")
 ```
 
 ```{r echo=FALSE}
-MHdf_2 <- subset(pulse18, select = c(SCRAM, REGION, PUBHLTH, PRIVHLTH, EST_ST, MH_SVCS, MH_NOTGET, INCOME))
+MHdf_2 <- subset(pulse18, select = c(SCRAM, REGION, PUBHLTH, PRIVHLTH, EST_ST, MH_SVCS, MH_NOTGET, INCOME, TBIRTH_YEAR, ABIRTH_YEAR))
 ```
+
 
 ```{r echo=FALSE}
 MHdf_2[MHdf_2$PUBHLTH == 3] <- NA
@@ -40,11 +41,17 @@ MHdf_2[MHdf_2$MH_SVCS == -99] <- NA
 MHdf_2[MHdf_2$MH_SVCS == -88] <- NA
 ```
 
+```{r}
+sum(is.na(MHdf_2))
+```
+
 
 
 ```{r echo=FALSE}
 MHdf_2 <- na.omit(MHdf_2)
 ```
+
+
 
 ```{r}
 MHdf_2$income <- ifelse(MHdf_2$INCOME == "1", " 25K and below",
@@ -475,3 +482,12 @@ fig <- fig  %>% layout (title = "Rate of total Mental Health Services Requested 
          
 fig
 ```
+
+```{r}
+library(gtsummary)
+```
+```{r}
+MHdf_2 %>% select( Region = region_2, Income = income, Insurance_Type =  insurance) %>% tbl_summary()
+```
+
+
