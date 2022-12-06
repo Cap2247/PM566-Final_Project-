@@ -53,7 +53,7 @@ MHdf_2 <- na.omit(MHdf_2)
 
 
 
-```{r}
+```{r echo=FALSE}
 MHdf_2$income <- ifelse(MHdf_2$INCOME == "1", " 25K and below",
                         ifelse(MHdf_2$INCOME == "2", "25K - 34.9K",
                         ifelse(MHdf_2$INCOME == "3", "35K - 49.9K",
@@ -72,7 +72,7 @@ Mh_svs_2 <- ifelse(MHdf_2$PUBHLTH == "1", "Recieved services", "No Services")
 
 ```
 
-```{r}
+```{r echo=FALSE}
 MHdf_2$state <- ifelse(MHdf_2$EST_ST == "1","Alabama",
                 ifelse(MHdf_2$EST_ST == "2", "Alaska",  
                 ifelse(MHdf_2$EST_ST == "4", "Arizona", 
@@ -158,7 +158,7 @@ table(MHdf_2$Mh_ntgt_2, MHdf_2$insurance)
  
 ```
 
-```{r}
+```{r echo=FALSE}
 DF2 <- MHdf_2 %>%
 dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   filter(MHdf_2$insurance == "Public insurance only") %>%
@@ -170,7 +170,7 @@ dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   
 ```
 
-```{r}
+```{r echo=FALSE}
 DF4 <- MHdf_2 %>%
 dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   filter(MHdf_2$insurance == "Private insurance only") %>%
@@ -182,7 +182,7 @@ dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   
 ```
 
-```{r}
+```{r echo=FALSE}
 DF_income_Pub <- MHdf_2 %>%
 dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   filter(MHdf_2$insurance == "Public insurance only") %>%
@@ -194,7 +194,7 @@ dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
 DF_income_Pub$Notrec_rate <- round(DF_income_Pub$Notrec_rate, digits = 2)
 ```
 
-```{r}
+```{r echo=FALSE}
 DF_income_Pri <- MHdf_2 %>%
 dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   filter(MHdf_2$insurance == "Private insurance only") %>%
@@ -207,7 +207,7 @@ DF_income_Pri$Notrec_rate <- round(DF_income_Pri$Notrec_rate, digits = 2)
 ```
 
 
-```{r}
+```{r echo=FALSE}
 DF_region_Pri <- MHdf_2 %>%
 dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   filter(MHdf_2$insurance == "Private insurance only") %>%
@@ -218,7 +218,7 @@ dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   Notrec_rate = num_notrec/Total_sv_needed)
 ```
 
-```{r}
+```{r echo=FALSE}
 DF_region_Pub <- MHdf_2 %>%
 dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   filter(MHdf_2$insurance == "Public insurance only") %>%
@@ -229,47 +229,28 @@ dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
   Notrec_rate = num_notrec/Total_sv_needed)
 ```
 
-DF3 <- MHdf_2 %>%
-dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
-  filter(MHdf_2$insurance == "Private insurance only") %>%
-  group_by(state) %>%
-  summarise(num_sv = n(),
-            num_rec = sum(MH_NOTGET)) %>%
-  mutate(services_nr = num_sv - num_rec, 
-  rec_rate = num_rec/num_sv) 
-  
 
 
 
-DF5 <- MHdf_2 %>%
-dplyr::mutate(MH_NOTGET = ifelse(MHdf_2$MH_NOTGET == "1",1,0)) %>%
-  filter(MHdf_2$insurance == "Public insurance only") %>%
-  group_by(state) %>%
-  summarise(num_sv = n(),
-            num_rec = sum(MH_NOTGET)) %>%
-  mutate(services_nr = num_sv - num_rec, 
-  rec_rate = services_nr/num_sv) 
-
-
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 ggplot(MHdf_2, aes(x= MHdf_2$region_2, fill = Mh_ntgt_2)) + geom_bar( position = position_dodge()) + labs(x= "REGION", y= "Count", subtitle = "Mental Health Services Needed but Not Recived by Region ", title = "Table 1")
  
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 ggplot(MHdf_2, aes(x= Mh_ntgt_2, fill = MHdf_2$insurance)) + geom_bar(position = position_dodge()) + labs(x= "Mental Health Services", y= "Count", subtitle = "Mental Health Services Needed but Not Recived by Insurance", title = "Table 2")
 ```
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 ggplot(MHdf_2, aes(x= region_2, fill = Mh_ntgt_2 )) + geom_bar(position = position_dodge())+ facet_wrap(~ MHdf_2$insurance) + labs(x= "REGION", y= "Count", subtitle = "Mental Health Services Needed but Not Recived by Region and Insurance", title = "Table 3")
 
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE }
 if(!require(plotly)) install.packages("plotly", repos = "http://cran.us.r-project.org")
 library(plotly)
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 private.insurance <- DF4 %>% 
                      plot_ly(x = ~Total_sv_needed, y = ~num_notrec, 
                      type = 'scatter',
@@ -284,7 +265,7 @@ private.insurance
 
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 public.insurance <- DF2 %>% 
                      plot_ly(x = ~Total_sv_needed, y = ~num_notrec, 
                      type = 'scatter',
@@ -298,7 +279,7 @@ public.insurance <- public.insurance %>% layout(title = 'Mental health services 
 public.insurance
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 DF_region_Pri %>%
   
 plot_ly(x = ~region_2, y = ~num_notrec, 
@@ -308,7 +289,7 @@ plot_ly(x = ~region_2, y = ~num_notrec,
                    colors = "Blues")
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 DF_region_Pub %>%
   
 plot_ly(x = ~region_2, y = ~num_notrec, 
@@ -321,12 +302,12 @@ plot_ly(x = ~region_2, y = ~num_notrec,
                 
 
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 income.data <- DF_income_Pri %>%
   left_join(DF_income_Pub, by = c("income"))            
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 income.data$income <- factor(income.data$income,
 levels=c(" 25K and below",
 "25K - 34.9K",
@@ -339,7 +320,7 @@ levels=c(" 25K and below",
 ```
 
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 
 income.data$hover_pri <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.x, "rate"))
 income.data$hover_pub <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.y, "rate"))
@@ -365,7 +346,7 @@ income
 ```
 
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 DF_income_Pub %>%
   
 plot_ly(x = ~income, y = ~Notrec_rate, 
@@ -375,33 +356,33 @@ plot_ly(x = ~income, y = ~Notrec_rate,
                    colors = "Reds")
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 large_data <- fread("world_country_and_usa_states_latitude_and_longitude_values.csv")
 ```
 
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 state.lat.lon <- large_data[, c("usa_state", "usa_state_latitude", "usa_state_longitude", "usa_state_code")]
 state_data <- state.lat.lon[-40,]
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 state_data <-rename(state_data, state = usa_state)
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 state_data.comp <- state_data %>%
                   left_join(DF2, by = c("state"))
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 state_data.comp <- na.omit(state_data.comp)
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 state_data.comp_2 <- state_data.comp %>%  mutate(per.rate = Notrec_rate * 100)
 ```
-```{r}
+```{r echo=FALSE, message=FALSE}
 state_data.comp_2 [round(per.rate, digits = 2)]
 
 ```  
@@ -414,45 +395,45 @@ state_data.comp_2 [round(per.rate, digits = 2)]
 
 
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 DF4.pri <- rename(DF4, total_sv_needed.pri = Total_sv_needed , num_notrec.pri = num_notrec , services_rec.pri = services_rec , Notrec_rate.pri = Notrec_rate )
 ```
-```{r}
+```{r echo=FALSE, message=FALSE}
 DF2.pub <- rename(DF2, total_sv_needed.pub = Total_sv_needed , num_notrec.pub = num_notrec , services_rec.pub = services_rec , Notrec_rate.pub = Notrec_rate )
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 map.data <- DF4.pri %>%
                   left_join(DF2.pub, by = c("state"),
                   left_join(state_data.comp_2, by = c("state")))
                 
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 map.data <- map.data %>%
                 left_join(state_data.comp_2, by = c("state"))
                   
 ```
 
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 map.data <- map.data %>% mutate(total.needed = total_sv_needed.pri + total_sv_needed.pub, tot.svs.notrec = num_notrec.pub + num_notrec.pri , tot.notrec.rate = tot.svs.notrec / total.needed * 100 
                                                                                                                                                                                     ) 
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 map.data$tot.notrec.rate <-  round(map.data$tot.notrec.rate, digits = 1)
 ```
 
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 map.data$hover <- with(map.data, paste(" total services requested", '<br>', state, '<br>', tot.svs.notrec, "total services not received", '<br>',  tot.notrec.rate, " % services not received " ))
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 l <- list(color = toRGB("white"), width=2)
 ```
-```{r}
+```{r echo=FALSE, message=FALSE}
 g <- list(
      scope = 'usa',
      projection = list(type = 'albers usa'),
@@ -462,7 +443,7 @@ g <- list(
 ```
  
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 fig <- plot_geo(state_data.comp, 
                locationmode = 'USA-states')
 
@@ -483,10 +464,10 @@ fig <- fig  %>% layout (title = "Rate of total Mental Health Services Requested 
 fig
 ```
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 library(gtsummary)
 ```
-```{r}
+```{r echo=FALSE, message=FALSE}
 MHdf_2 %>% select( Region = region_2, Income = income, Insurance_Type =  insurance) %>% tbl_summary()
 ```
 

@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 rm(list = ls())
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 library(data.table)
 library(tidyverse)
 library(ggplot2)
@@ -68,13 +68,13 @@ MHdf_2$income <- ifelse(MHdf_2$INCOME == "1", " 25K and below",
 ```
 
 
-```{r echo= FALSE}
+```{r echo=FALSE}
 MHdf_2$Mh_ntgt_2 <- ifelse(MHdf_2$MH_NOTGET == "1", "Services Not Recieved", "Services Recieved")
 Mh_svs_2 <- ifelse(MHdf_2$PUBHLTH == "1", "Recieved services", "No Services")
 
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 MHdf_2$state <- ifelse(MHdf_2$EST_ST == "1","Alabama",
                 ifelse(MHdf_2$EST_ST == "2", "Alaska",  
                 ifelse(MHdf_2$EST_ST == "4", "Arizona", 
@@ -126,7 +126,7 @@ MHdf_2$state <- ifelse(MHdf_2$EST_ST == "1","Alabama",
                 ifelse(MHdf_2$EST_ST == "54", "West Virgina",
                 ifelse(MHdf_2$EST_ST == "55", "Wisconsin", "Wyoming"
                       ))))))))))))))))))))))))))))))))))))))))))))))))))
-                    table(MHdf_2$state, useNA = "always")
+                    #table(MHdf_2$state, useNA = "always")
                        
                 
 ```
@@ -139,7 +139,7 @@ MHdf_2$insurance <- ifelse(MHdf_2$PUBHLTH == "1" & MHdf_2$PRIVHLTH == "1", "Both
                     ifelse(MHdf_2$PUBHLTH == "1" & MHdf_2$PRIVHLTH == "2", "Public insurance only", 
                     ifelse(MHdf_2$PUBHLTH == "2" & MHdf_2$PRIVHLTH == "1", "Private insurance only", 
                     ifelse(MHdf_2$PUBHLTH == "2" & MHdf_2$PRIVHLTH == "2", "No Insurance", NA))))
-                table(MHdf_2$insurance, useNA = "always")
+                #table(MHdf_2$insurance, useNA = "always")
 
 ```
 
@@ -152,11 +152,11 @@ MHdf_2$region_2 <- ifelse(MHdf_2$REGION == "1", "Northeast",
 
 
 ```{r echo=FALSE}
-prop.table(table(MHdf_2$Mh_ntgt_2, MHdf_2$insurance))*100
+#prop.table(table(MHdf_2$Mh_ntgt_2, MHdf_2$insurance))*100
 ```
 
-```{r echo = FALSE}
-table(MHdf_2$Mh_ntgt_2, MHdf_2$insurance)
+```{r echo=FALSE}
+#table(MHdf_2$Mh_ntgt_2, MHdf_2$insurance)
  
 ```
 
@@ -246,12 +246,12 @@ ggplot(MHdf_2, aes(x= region_2, fill = Mh_ntgt_2 )) + geom_bar(position = positi
 
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 if(!require(plotly)) install.packages("plotly", repos = "http://cran.us.r-project.org")
 library(plotly)
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 private.insurance <- DF4 %>% 
                      plot_ly(x = ~Total_sv_needed, y = ~num_notrec, 
                      type = 'scatter',
@@ -266,7 +266,7 @@ private.insurance
 
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message= FALSE}
 public.insurance <- DF2 %>% 
                      plot_ly(x = ~Total_sv_needed, y = ~num_notrec, 
                      type = 'scatter',
@@ -280,7 +280,7 @@ public.insurance <- public.insurance %>% layout(title = 'Mental health services 
 public.insurance
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 DF_region_Pri %>%
   
 plot_ly(x = ~region_2, y = ~num_notrec, 
@@ -290,7 +290,7 @@ plot_ly(x = ~region_2, y = ~num_notrec,
                    colors = "Blues")
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 DF_region_Pub %>%
   
 plot_ly(x = ~region_2, y = ~num_notrec, 
@@ -321,7 +321,7 @@ levels=c(" 25K and below",
 ```
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 
 income.data$hover_pri <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.x, "rate"))
 income.data$hover_pub <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.y, "rate"))
@@ -347,7 +347,7 @@ income
 ```
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 DF_income_Pub %>%
   
 plot_ly(x = ~income, y = ~Notrec_rate, 
@@ -357,7 +357,7 @@ plot_ly(x = ~income, y = ~Notrec_rate,
                    colors = "Reds")
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 large_data <- fread("world_country_and_usa_states_latitude_and_longitude_values.csv")
 ```
 
@@ -396,14 +396,14 @@ DF4.pri <- rename(DF4, total_sv_needed.pri = Total_sv_needed , num_notrec.pri = 
 DF2.pub <- rename(DF2, total_sv_needed.pub = Total_sv_needed , num_notrec.pub = num_notrec , services_rec.pub = services_rec , Notrec_rate.pub = Notrec_rate )
 ```
 
-```{r echo= FALSE}
+```{r echo=FALSE, message=FALSE}
 map.data <- DF4.pri %>%
                   left_join(DF2.pub, by = c("state"),
                   left_join(state_data.comp_2, by = c("state")))
                 
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 map.data <- map.data %>%
                 left_join(state_data.comp_2, by = c("state"))
                   
@@ -416,11 +416,11 @@ map.data$tot.notrec.rate <-  round(map.data$tot.notrec.rate, digits = 1)
 ```
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 map.data$hover <- with(map.data, paste(" total services requested", '<br>', state, '<br>', tot.svs.notrec, "total services not received", '<br>',  tot.notrec.rate, " % services not received " ))
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 l <- list(color = toRGB("white"), width=2)
 ```
 ```{r echo=FALSE}
@@ -454,7 +454,7 @@ fig <- fig  %>% layout (title = "Rate of total Mental Health Services Requested 
 fig
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 library(gtsummary)
 ```
 ```{r echo=FALSE, message=FALSE}
