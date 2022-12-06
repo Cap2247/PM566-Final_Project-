@@ -1,0 +1,1056 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Final Project},
+  pdfauthor={CP},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Final Project}
+\author{CP}
+\date{2022-12-06}
+
+\begin{document}
+\maketitle
+
+\begin{verbatim}
+## Warning: package 'data.table' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.2 --
+## v ggplot2 3.3.6     v purrr   0.3.4
+## v tibble  3.1.8     v dplyr   1.0.9
+## v tidyr   1.2.0     v stringr 1.4.1
+## v readr   2.1.2     v forcats 0.5.2
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::between()   masks data.table::between()
+## x dplyr::filter()    masks stats::filter()
+## x dplyr::first()     masks data.table::first()
+## x dplyr::lag()       masks stats::lag()
+## x dplyr::last()      masks data.table::last()
+## x purrr::transpose() masks data.table::transpose()
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 189510
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##              Alabama               Alaska              Arizona 
+##                  478                  959                 1080 
+##             Arkansas           California             Colorado 
+##                  502                 2748                 1182 
+##          Connecticut             Delaware District of Columbia 
+##                  595                  432                  508 
+##              Florida              Georgia               Hawaii 
+##                 1326                  789                  431 
+##                Idaho             Illinois              Indiana 
+##                  801                  989                  776 
+##                 Iowa               Kansas             Kentucky 
+##                  670                  712                  537 
+##            Louisiana                Maine             Maryland 
+##                  448                  337                  954 
+##        Massachusetts             Michigan            Minnesota 
+##                 1076                  837                  935 
+##          Mississippi             Missouri              Montana 
+##                  290                  631                  475 
+##             Nebraska               Nevada        New Hampshire 
+##                  607                  613                  571 
+##           New Jersey           New Mexico             New York 
+##                  667                  796                  803 
+##       North Carolina         North Dakota                 Ohio 
+##                  614                  388                  593 
+##             Oklahoma               Oregon         Pennsylvania 
+##                  549                 1094                  951 
+##         Rhode Island       South Carolina         South Dakota 
+##                  402                  525                  448 
+##            Tennessee                Texas                 Utah 
+##                  642                 1922                 1532 
+##              Vermont             Virginia           Washington 
+##                  422                 1017                 1592 
+##         West Virgina            Wisconsin              Wyoming 
+##                  385                  686                  461 
+##                 <NA> 
+##                    0
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##                   Both           No Insurance Private insurance only 
+##                   9613                   2641                  21890 
+##  Public insurance only                   <NA> 
+##                   5634                      0
+\end{verbatim}
+
+\begin{verbatim}
+##                        
+##                              Both No Insurance Private insurance only
+##   Services Not Recieved  1.799990     1.390216               6.317562
+##   Services Recieved     22.366635     5.249133              48.712856
+##                        
+##                         Public insurance only
+##   Services Not Recieved              1.988536
+##   Services Recieved                 12.175072
+\end{verbatim}
+
+\begin{verbatim}
+##                        
+##                          Both No Insurance Private insurance only
+##   Services Not Recieved   716          553                   2513
+##   Services Recieved      8897         2088                  19377
+##                        
+##                         Public insurance only
+##   Services Not Recieved                   791
+##   Services Recieved                      4843
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-21-1.pdf}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-22-1.pdf}
+\includegraphics{report_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\begin{verbatim}
+## Loading required package: plotly
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'plotly' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'plotly'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:ggplot2':
+## 
+##     last_plot
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     filter
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:graphics':
+## 
+##     layout
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Purples is 9
+## Returning the palette you asked for with that many colors
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+\begin{verbatim}
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+
+## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Reds is 9
+## Returning the palette you asked for with that many colors
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-26-1.pdf}
+
+\begin{verbatim}
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\begin{verbatim}
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\begin{verbatim}
+## Warning in RColorBrewer::brewer.pal(N, "Set2"): minimal value for n is 3, returning requested palette with 3 different levels
+
+## Warning in RColorBrewer::brewer.pal(N, "Set2"): minimal value for n is 3, returning requested palette with 3 different levels
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-31-1.pdf}
+
+\begin{verbatim}
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+
+## Warning: 'bar' objects don't have these attributes: 'mode'
+## Valid attributes include:
+## '_deprecated', 'alignmentgroup', 'base', 'basesrc', 'cliponaxis', 'constraintext', 'customdata', 'customdatasrc', 'dx', 'dy', 'error_x', 'error_y', 'hoverinfo', 'hoverinfosrc', 'hoverlabel', 'hovertemplate', 'hovertemplatesrc', 'hovertext', 'hovertextsrc', 'ids', 'idssrc', 'insidetextanchor', 'insidetextfont', 'legendgroup', 'legendgrouptitle', 'legendrank', 'marker', 'meta', 'metasrc', 'name', 'offset', 'offsetgroup', 'offsetsrc', 'opacity', 'orientation', 'outsidetextfont', 'selected', 'selectedpoints', 'showlegend', 'stream', 'text', 'textangle', 'textfont', 'textposition', 'textpositionsrc', 'textsrc', 'texttemplate', 'texttemplatesrc', 'transforms', 'type', 'uid', 'uirevision', 'unselected', 'visible', 'width', 'widthsrc', 'x', 'x0', 'xaxis', 'xcalendar', 'xhoverformat', 'xperiod', 'xperiod0', 'xperiodalignment', 'xsrc', 'y', 'y0', 'yaxis', 'ycalendar', 'yhoverformat', 'yperiod', 'yperiod0', 'yperiodalignment', 'ysrc', 'key', 'set', 'frame', 'transforms', '_isNestedKey', '_isSimpleKey', '_isGraticule', '_bbox'
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-32-1.pdf}
+
+\begin{verbatim}
+##                    state usa_state_latitude usa_state_longitude usa_state_code
+##  1:               Kansas           39.01190           -98.48425             KS
+##  2:              Florida           27.66483           -81.51575             FL
+##  3:               Kansas           39.01190           -98.48425             KS
+##  4:             Illinois           40.63312           -89.39853             IL
+##  5:             Illinois           40.63312           -89.39853             IL
+##  6:             Kentucky           37.83933           -84.27002             KY
+##  7:              Arizona           34.04893          -111.09373             AZ
+##  8:             Illinois           40.63312           -89.39853             IL
+##  9:                 Iowa           41.87800           -93.09770             IA
+## 10:              Florida           27.66483           -81.51575             FL
+## 11:          Connecticut           41.60322           -73.08775             CT
+## 12:               Kansas           39.01190           -98.48425             KS
+## 13:                 Iowa           41.87800           -93.09770             IA
+## 14:                 Iowa           41.87800           -93.09770             IA
+## 15:                 Iowa           41.87800           -93.09770             IA
+## 16:              Florida           27.66483           -81.51575             FL
+## 17:               Hawaii           19.89868          -155.66586             HI
+## 18:               Hawaii           19.89868          -155.66586             HI
+## 19:              Georgia           32.15743           -82.90712             GA
+## 20:             Illinois           40.63312           -89.39853             IL
+## 21:             Illinois           40.63312           -89.39853             IL
+## 22:              Florida           27.66483           -81.51575             FL
+## 23:                 Iowa           41.87800           -93.09770             IA
+## 24:             Kentucky           37.83933           -84.27002             KY
+## 25:             Colorado           39.55005          -105.78207             CO
+## 26:                Maine           45.25378           -69.44547             ME
+## 27:              Georgia           32.15743           -82.90712             GA
+## 28:              Georgia           32.15743           -82.90712             GA
+## 29:              Georgia           32.15743           -82.90712             GA
+## 30:              Indiana           40.55122           -85.60236             IN
+## 31:               Hawaii           19.89868          -155.66586             HI
+## 32:                 Iowa           41.87800           -93.09770             IA
+## 33:            Louisiana           31.24482           -92.14502             LA
+## 34:              Florida           27.66483           -81.51575             FL
+## 35:                 Iowa           41.87800           -93.09770             IA
+## 36:              Florida           27.66483           -81.51575             FL
+## 37:              Georgia           32.15743           -82.90712             GA
+## 38:            Louisiana           31.24482           -92.14502             LA
+## 39:              Georgia           32.15743           -82.90712             GA
+## 40:                 Iowa           41.87800           -93.09770             IA
+## 41:             Colorado           39.55005          -105.78207             CO
+## 42:               Kansas           39.01190           -98.48425             KS
+## 43:              Georgia           32.15743           -82.90712             GA
+## 44: District of Columbia           38.90599           -77.03342             DC
+## 45:             Illinois           40.63312           -89.39853             IL
+## 46:        Massachusetts           42.40721           -71.38244             MA
+## 47:             Kentucky           37.83933           -84.27002             KY
+## 48:             Kentucky           37.83933           -84.27002             KY
+## 49:             Delaware           38.91083           -75.52767             DE
+## 50:             Maryland           39.04575           -76.64127             MD
+##                    state usa_state_latitude usa_state_longitude usa_state_code
+##     Total_sv_needed num_notrec services_rec Notrec_rate  per.rate
+##  1:              81         10           71  0.12345679 12.345679
+##  2:             210         23          187  0.10952381 10.952381
+##  3:              81         10           71  0.12345679 12.345679
+##  4:             128         17          111  0.13281250 13.281250
+##  5:             128         17          111  0.13281250 13.281250
+##  6:              99         12           87  0.12121212 12.121212
+##  7:             203         31          172  0.15270936 15.270936
+##  8:             128         17          111  0.13281250 13.281250
+##  9:             125         17          108  0.13600000 13.600000
+## 10:             210         23          187  0.10952381 10.952381
+## 11:              84          4           80  0.04761905  4.761905
+## 12:              81         10           71  0.12345679 12.345679
+## 13:             125         17          108  0.13600000 13.600000
+## 14:             125         17          108  0.13600000 13.600000
+## 15:             125         17          108  0.13600000 13.600000
+## 16:             210         23          187  0.10952381 10.952381
+## 17:              56         10           46  0.17857143 17.857143
+## 18:              56         10           46  0.17857143 17.857143
+## 19:              85          6           79  0.07058824  7.058824
+## 20:             128         17          111  0.13281250 13.281250
+## 21:             128         17          111  0.13281250 13.281250
+## 22:             210         23          187  0.10952381 10.952381
+## 23:             125         17          108  0.13600000 13.600000
+## 24:              99         12           87  0.12121212 12.121212
+## 25:             160         30          130  0.18750000 18.750000
+## 26:              58          6           52  0.10344828 10.344828
+## 27:              85          6           79  0.07058824  7.058824
+## 28:              85          6           79  0.07058824  7.058824
+## 29:              85          6           79  0.07058824  7.058824
+## 30:             124         13          111  0.10483871 10.483871
+## 31:              56         10           46  0.17857143 17.857143
+## 32:             125         17          108  0.13600000 13.600000
+## 33:              85         10           75  0.11764706 11.764706
+## 34:             210         23          187  0.10952381 10.952381
+## 35:             125         17          108  0.13600000 13.600000
+## 36:             210         23          187  0.10952381 10.952381
+## 37:              85          6           79  0.07058824  7.058824
+## 38:              85         10           75  0.11764706 11.764706
+## 39:              85          6           79  0.07058824  7.058824
+## 40:             125         17          108  0.13600000 13.600000
+## 41:             160         30          130  0.18750000 18.750000
+## 42:              81         10           71  0.12345679 12.345679
+## 43:              85          6           79  0.07058824  7.058824
+## 44:              53          8           45  0.15094340 15.094340
+## 45:             128         17          111  0.13281250 13.281250
+## 46:             134         21          113  0.15671642 15.671642
+## 47:              99         12           87  0.12121212 12.121212
+## 48:              99         12           87  0.12121212 12.121212
+## 49:              66          9           57  0.13636364 13.636364
+## 50:             106         16           90  0.15094340 15.094340
+##     Total_sv_needed num_notrec services_rec Notrec_rate  per.rate
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-47-1.pdf}
+
+\begin{verbatim}
+## Warning: package 'gtsummary' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{longtable}[]{@{}lc@{}}
+\toprule()
+\textbf{Characteristic} & \textbf{N = 39,778} \\
+\midrule()
+\endhead
+Region & \\
+Midwest & 8,272 (21\%) \\
+Northeast & 5,824 (15\%) \\
+South & 11,918 (30\%) \\
+West & 13,764 (35\%) \\
+Income & \\
+25K and below & 3,947 (9.9\%) \\
+100K - 149.9K & 7,456 (19\%) \\
+150K - 199.9K & 3,603 (9.1\%) \\
+199.9K and above & 4,187 (11\%) \\
+25K - 34.9K & 3,337 (8.4\%) \\
+35K - 49.9K & 4,339 (11\%) \\
+50K - 74.9K & 6,979 (18\%) \\
+75K - 99.9K & 5,930 (15\%) \\
+Insurance\_Type & \\
+Both & 9,613 (24\%) \\
+No Insurance & 2,641 (6.6\%) \\
+Private insurance only & 21,890 (55\%) \\
+Public insurance only & 5,634 (14\%) \\
+\bottomrule()
+\end{longtable}
+
+\end{document}
