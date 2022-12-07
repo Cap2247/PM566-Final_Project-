@@ -360,7 +360,7 @@ g <- list(
 ```
 
 
-# **Introduction** 
+# Introduction 
 
 #### During the COVID-19 pandemic, mental health services were disrupted, causing profound consequences for individuals in need of consistent mental health care. The pandemic exacerbated the need for mental health services which expanded an existing unmet demand. During the pandemic, studies have found the need for mental health services rose from one in ten adults requesting services for depression and anxiety to one in four adults (Zhu et al., 2022). This supports recent findings that prolonged periods of quarantine, social isolation, and work and school disruption are associated with anxiety and psychological distress (Brooks et al., 2020). 
 
@@ -371,7 +371,7 @@ g <- list(
 #### The growing demand for mental health services, possible reduction in coverage, and changing delivery systems, may have decreased access to necessary mental health services during the COVID-19 pandemic. It remains unclear the extent to which these changes in the mental health services delivery system have impacted the utilization of services. Moreover, it is unclear how insurance influenced access of mental health services. Therefore, the primary aim of this study is to establish insurance-related patterns of mental healthcare utilization from October 28, 2020 – November 9, 2020. Specifically, did the type of health insurance affect access to mental health services during the COVID-19 pandemic?
 
 
-# **Methods** 
+# Methods 
 ## Data 
 #### We conducted a retrospective cross-sectional analysis of the U.S. Census Bureau’s Household Pulse Survey (HPS) COVID-19 data. We choose to evaluate data from the phase 3 data release, week 18 October 28, 2020- November 9, 2020. The HPS is a 20 min online survey designed to quickly and efficiently measure the social and economic impacts of COVID-19 on American households. The Census Bureau releases the HPS data every 4 weeks. 
 
@@ -380,7 +380,7 @@ g <- list(
 
 #### We conducted descriptive analyses comparing the utilization count of mental health services by insurance type. We compared the rates of receiving mental health services between public and private insurance by state and income. There was a total of 189,510 missing variables that were excluded from this analysis.  
 
-# **Results**
+# Results
 
 ##### Please see study webpage for interactive figures
 #### Demographic characteristics for our study sample by region are presented in Table 1. Our final analysis consisted of 39,778 individuals from four regions within the United States. Individuals receiving between 100-150k a year represent 19% of our sample. Individuals with private insurance make up over 50% of our sample. 
@@ -401,7 +401,7 @@ MHdf_2  %>% select( Region = region_2 ,Income = income, Insurance_type = insuran
 #### Figure 4. This map depicts the total rate of mental health services requested and not received for individuals with both public and private insurance by state. Although California had the highest count of services not received among private and public insurance, respectively, California has a lower rate of services not received (13.7%) than Utah (14.5%), Oregon (15.8%), Oklahoma (16.2%), and Vermont (14.6%).
 
 
-# **Conclusion and Summary** 
+# Conclusion and Summary 
 
 #### This study specifically aimed to evaluate differences in mental health services utilization among individuals with private or public insurance during the early months of the COVIID-19 pandemic. We have found that overall, individuals with private insurance have higher rates of not receiving services than those who have public insurance. This is a surprising finding considering mechanisms within private insurance have been thought to make healthcare more accessible than the systemic bureaucracy of Medicare and Medicaid. These results indicate the benefits that recent changes to Medicaid may have made to increase access to services. 
 

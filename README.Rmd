@@ -468,7 +468,14 @@ fig
 library(gtsummary)
 ```
 ```{r echo=FALSE, message=FALSE}
-MHdf_2 %>% select( Region = region_2, Income = income, Insurance_Type =  insurance) %>% tbl_summary()
+table <- MHdf_2 %>% tbl_summary(by = region_2, 
+                                label = income ~ "Income", insurance ~ "Insurance Type")%>%
+                                bold_labels()
+                      
+```
+
+```{r}
+table
 ```
 
 

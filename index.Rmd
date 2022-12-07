@@ -1,6 +1,6 @@
 ---
-title: "Mental health service utilization during COVID-19 pandemic"
-author: "Camille Parchment"
+title: "Mental health service utilization during the COVID-19 pandemic"
+authohr: "Camille Parchment"
 output: 
     html_document:
         toc: TRUE
@@ -8,6 +8,8 @@ output:
 ---
 
 This is my PM566 Final Project website. file:///C:/Users/camil/Desktop/GitHub/PM-566-final/README.html
+
+Please follow this link for the full report of Mental health service utilization during the COVID-19 pandemic : https://github.com/Cap2247/PM566-Final_Project-/blob/main/report.pdf 
 
 <br>
 
