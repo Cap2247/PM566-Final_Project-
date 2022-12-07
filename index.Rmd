@@ -145,7 +145,7 @@ fig <- fig  %>% layout (title = "Rate of total mental health services requested 
 
 The following plots depict the rates and counts of mental health services that were requested and not received by state, insurance type and income.
 
-### Services not received <br> by income
+### Figure 1.
 ```{r echo= FALSE}
 income 
 ```
@@ -154,7 +154,7 @@ This bar graph illustrates the count and rate of mental health services requeste
 
 Individuals who have public insurance have lower rates of not receiving services than those who have private insurance with the exception of individuals who make less than 25k a year and those who make between 35k and 49k a year. 
 
-### Private insurance <br> by state
+### Figure 2.
 
 ```{r echo=FALSE}
 private.insurance
@@ -162,7 +162,7 @@ private.insurance
 
 This scatter plot illustrates the number of services that were requested and not received during October 28, 2021 – November 9, 2021. It can be seen that California has the highest number of mental health services that were requested and not received during the pandemic  amoung those with private insurance. 
 
-### Public insurance <br> by state 
+### Figure 3. 
 
 ```{r echo=FALSE}
 public.insurance
@@ -170,7 +170,7 @@ public.insurance
 
 This scatter plot illustrates the number of services that were requested and not received during October 28, 2021 – November 9, 2021. It can be seen that California has the highest number of mental health services that were requested and not received during the pandemic  amoung those with public insurance. 
 
-### Total service <br> not received
+### Figure 4.
 
 ```{r echo=FALSE}
 fig

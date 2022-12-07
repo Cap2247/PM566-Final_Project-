@@ -23,28 +23,8 @@
   \usepackage[]{microtype}
   \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
 \usepackage{xcolor}
 \usepackage[margin=1in]{geometry}
-\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -62,6 +42,10 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -82,7 +66,7 @@
 \maketitle
 
 \hypertarget{introduction}{%
-\section{INTRODUCTION}\label{introduction}}
+\section{\texorpdfstring{\textbf{Introduction}}{Introduction}}\label{introduction}}
 
 \hypertarget{during-the-covid-19-pandemic-mental-health-services-were-disrupted-causing-profound-consequences-for-individuals-in-need-of-consistent-mental-health-care.-the-pandemic-exacerbated-the-need-for-mental-health-services-which-expanded-an-existing-unmet-demand.-during-the-pandemic-studies-have-found-the-need-for-mental-health-services-rose-from-one-in-ten-adults-requesting-services-for-depression-and-anxiety-to-one-in-four-adults-zhu-et-al.-2022.-this-supports-recent-findings-that-prolonged-periods-of-quarantine-social-isolation-and-work-and-school-disruption-are-associated-with-anxiety-and-psychological-distress-brooks-et-al.-2020.}{%
 \paragraph{During the COVID-19 pandemic, mental health services were
@@ -97,24 +81,25 @@ work and school disruption are associated with anxiety and psychological
 distress (Brooks et al.,
 2020).}\label{during-the-covid-19-pandemic-mental-health-services-were-disrupted-causing-profound-consequences-for-individuals-in-need-of-consistent-mental-health-care.-the-pandemic-exacerbated-the-need-for-mental-health-services-which-expanded-an-existing-unmet-demand.-during-the-pandemic-studies-have-found-the-need-for-mental-health-services-rose-from-one-in-ten-adults-requesting-services-for-depression-and-anxiety-to-one-in-four-adults-zhu-et-al.-2022.-this-supports-recent-findings-that-prolonged-periods-of-quarantine-social-isolation-and-work-and-school-disruption-are-associated-with-anxiety-and-psychological-distress-brooks-et-al.-2020.}}
 
-\hypertarget{in-addition-to-a-shortage-of-mental-health-professionals-mental-health-providers-needed-to-adjust-service-delivery-to-comply-with-safety-protocols-which-further-inhibited-access-to-care-for-some-individuals.-to-meet-the-growing-demands-for-mental-health-care-the-us-government-waived-numerous-regulations-around-the-delivery-of-telemedicine-including-regulatory-barriers-that-would-allow-for-delivery-across-state-lines-bojdani-et-al.-2020.-however-after-surveying-32-california-nonprofit-behavioral-health-agencies-bartels-et-al.-2020-found-that-87-lacked-the-equipment-required-to-facilitate-telehealth-care-and-of-the-health-agencies-that-could-continue-in-person-treatment-many-lacked-access-to-appropriate-ppe-for-staff.-additionally-states-had-to-reform-policies-around-payment-structures-to-allow-for-financial-support-of-remote-telemedicine-models.-despite-these-attempts-to-mitigate-the-unforeseen-challenges-to-mental-health-care-delivery-a-decrease-in-revenue-continued-to-occur-resulting-in-mental-health-professionals-being-furloughed-or-terminated-bojdani-et-al.-2020.}{%
+\hypertarget{in-addition-to-a-shortage-of-mental-health-professionals-mental-health-providers-needed-to-adjust-service-delivery-to-comply-with-safety-protocols-which-further-inhibited-access-to-care-for-some-individuals.-to-meet-the-growing-demands-for-mental-health-care-the-us-government-waived-numerous-regulations-around-the-delivery-of-telemedicine-including-regulatory-barriers-that-would-allow-for-delivery-across-state-lines-bojdani-et-al.-2020.-however-after-surveying-32-californian-nonprofit-behavioral-health-agencies-bartels-et-al.-2020-found-that-87-lacked-the-equipment-required-to-facilitate-telehealth-care-and-of-the-health-agencies-that-could-continue-in-person-treatment-many-lacked-access-to-appropriate-ppe-for-staff.-additionally-states-had-to-reform-policies-around-payment-structures-to-allow-for-financial-support-of-remote-telemedicine-models.-despite-these-attempts-to-mitigate-the-unforeseen-challenges-to-mental-health-care-delivery-a-decrease-in-revenue-continued-to-occur-resulting-in-mental-health-professionals-being-furloughed-or-terminated-bojdani-et-al.-2020.}{%
 \paragraph{In addition to a shortage of mental health professionals,
 mental health providers needed to adjust service delivery to comply with
 safety protocols, which further inhibited access to care for some
-individuals. To meet the growing demands for mental health care the US
+individuals. To meet the growing demands for mental health care, the US
 government waived numerous regulations around the delivery of
 telemedicine, including regulatory barriers that would allow for
 delivery across state lines (Bojdani et al., 2020). However, after
-surveying 32 California nonprofit behavioral health agencies, Bartels et
-al.~(2020) found that 87\% lacked the equipment required to facilitate
-telehealth care, and of the health agencies that could continue
-in-person treatment, many lacked access to appropriate PPE for staff.
-Additionally, states had to reform policies around payment structures to
-allow for financial support of remote telemedicine models. Despite these
-attempts to mitigate the unforeseen challenges to mental health care
-delivery, a decrease in revenue continued to occur, resulting in mental
-health professionals being furloughed or terminated (Bojdani et al.,
-2020).}\label{in-addition-to-a-shortage-of-mental-health-professionals-mental-health-providers-needed-to-adjust-service-delivery-to-comply-with-safety-protocols-which-further-inhibited-access-to-care-for-some-individuals.-to-meet-the-growing-demands-for-mental-health-care-the-us-government-waived-numerous-regulations-around-the-delivery-of-telemedicine-including-regulatory-barriers-that-would-allow-for-delivery-across-state-lines-bojdani-et-al.-2020.-however-after-surveying-32-california-nonprofit-behavioral-health-agencies-bartels-et-al.-2020-found-that-87-lacked-the-equipment-required-to-facilitate-telehealth-care-and-of-the-health-agencies-that-could-continue-in-person-treatment-many-lacked-access-to-appropriate-ppe-for-staff.-additionally-states-had-to-reform-policies-around-payment-structures-to-allow-for-financial-support-of-remote-telemedicine-models.-despite-these-attempts-to-mitigate-the-unforeseen-challenges-to-mental-health-care-delivery-a-decrease-in-revenue-continued-to-occur-resulting-in-mental-health-professionals-being-furloughed-or-terminated-bojdani-et-al.-2020.}}
+surveying 32 Californian nonprofit behavioral health agencies, Bartels
+et al.~(2020) found that 87\% lacked the equipment required to
+facilitate telehealth care, and of the health agencies that could
+continue in-person treatment, many lacked access to appropriate PPE for
+staff. Additionally, states had to reform policies around payment
+structures to allow for financial support of remote telemedicine models.
+Despite these attempts to mitigate the unforeseen challenges to mental
+health care delivery, a decrease in revenue continued to occur,
+resulting in mental health professionals being furloughed or terminated
+(Bojdani et al.,
+2020).}\label{in-addition-to-a-shortage-of-mental-health-professionals-mental-health-providers-needed-to-adjust-service-delivery-to-comply-with-safety-protocols-which-further-inhibited-access-to-care-for-some-individuals.-to-meet-the-growing-demands-for-mental-health-care-the-us-government-waived-numerous-regulations-around-the-delivery-of-telemedicine-including-regulatory-barriers-that-would-allow-for-delivery-across-state-lines-bojdani-et-al.-2020.-however-after-surveying-32-californian-nonprofit-behavioral-health-agencies-bartels-et-al.-2020-found-that-87-lacked-the-equipment-required-to-facilitate-telehealth-care-and-of-the-health-agencies-that-could-continue-in-person-treatment-many-lacked-access-to-appropriate-ppe-for-staff.-additionally-states-had-to-reform-policies-around-payment-structures-to-allow-for-financial-support-of-remote-telemedicine-models.-despite-these-attempts-to-mitigate-the-unforeseen-challenges-to-mental-health-care-delivery-a-decrease-in-revenue-continued-to-occur-resulting-in-mental-health-professionals-being-furloughed-or-terminated-bojdani-et-al.-2020.}}
 
 \hypertarget{at-the-onset-of-the-pandemic-several-state-and-local-governments-issued-stay-at-home-orders-to-reduce-viral-spread.-these-orders-resulted-in-increased-emotional-distress-e.g.-anxiety-depression-and-loss-of-employment.-fronstin-woodbury-2020-estimate-that-approximately-7.7-million-workers-and-6.9-million-dependants-lost-their-insurance-in-the-united-states-by-june-2020.-employers-are-the-leading-providers-of-health-insurance-in-the-united-states-suggesting-that-newly-unemployed-individuals-may-have-lost-access-to-secure-healthcare-coverage.-the-urban-institute-estimates-that-about-a-third-of-individuals-who-loose-employer-sponsored-insurance-will-become-uninsured-and-just-over-a-quarter-will-obtain-insurance-through-medicaid-or-the-childrens-health-insurance-program-chip.-considering-the-unprecedented-loss-of-employment-that-occurred-during-the-pandemic-the-shift-from-employer-sponsored-insurance-to-public-insurance-changed-how-individuals-were-accessing-necessary-mental-health-care.}{%
 \paragraph{At the onset of the pandemic, several state and local
@@ -149,37 +134,38 @@ COVID-19
 pandemic?}\label{the-growing-demand-for-mental-health-services-possible-reduction-in-coverage-and-changing-delivery-systems-may-have-decreased-access-to-necessary-mental-health-services-during-the-covid-19-pandemic.-it-remains-unclear-the-extent-to-which-these-changes-in-the-mental-health-services-delivery-system-have-impacted-the-utilization-of-services.-moreover-it-is-unclear-how-insurance-influenced-access-of-mental-health-services.-therefore-the-primary-aim-of-this-study-is-to-establish-insurance-related-patterns-of-mental-healthcare-utilization-from-october-28-2020-november-9-2020.-specifically-did-the-type-of-health-insurance-affect-access-to-mental-health-services-during-the-covid-19-pandemic}}
 
 \hypertarget{methods}{%
-\section{Methods}\label{methods}}
+\section{\texorpdfstring{\textbf{Methods}}{Methods}}\label{methods}}
 
 \hypertarget{data}{%
 \subsection{Data}\label{data}}
 
-\hypertarget{we-conducted-a-retrospective-cross-sectional-analysis-of-the-u.s.-census-bureaus-household-pulse-survey-hps-covid-19-data.-we-choose-to-evaluate-data-from-the-phase-3-data-release-week-18-october-28-2020--november-9-2020.-the-hps-is-a-20-min-online-survey-designed-to-quickly-and-efficiently-measure-the-social-and-economic-impacts-of-the-household-access-the-united-states-during-the-covid-19-pandemic.}{%
+\hypertarget{we-conducted-a-retrospective-cross-sectional-analysis-of-the-u.s.-census-bureaus-household-pulse-survey-hps-covid-19-data.-we-choose-to-evaluate-data-from-the-phase-3-data-release-week-18-october-28-2020--november-9-2020.-the-hps-is-a-20-min-online-survey-designed-to-quickly-and-efficiently-measure-the-social-and-economic-impacts-of-covid-19-on-american-households.-the-census-bureau-releases-the-hps-data-every-4-weeks.}{%
 \paragraph{We conducted a retrospective cross-sectional analysis of the
 U.S. Census Bureau's Household Pulse Survey (HPS) COVID-19 data. We
 choose to evaluate data from the phase 3 data release, week 18 October
 28, 2020- November 9, 2020. The HPS is a 20 min online survey designed
 to quickly and efficiently measure the social and economic impacts of
-the household access the United States during the COVID-19
-pandemic.}\label{we-conducted-a-retrospective-cross-sectional-analysis-of-the-u.s.-census-bureaus-household-pulse-survey-hps-covid-19-data.-we-choose-to-evaluate-data-from-the-phase-3-data-release-week-18-october-28-2020--november-9-2020.-the-hps-is-a-20-min-online-survey-designed-to-quickly-and-efficiently-measure-the-social-and-economic-impacts-of-the-household-access-the-united-states-during-the-covid-19-pandemic.}}
+COVID-19 on American households. The Census Bureau releases the HPS data
+every 4
+weeks.}\label{we-conducted-a-retrospective-cross-sectional-analysis-of-the-u.s.-census-bureaus-household-pulse-survey-hps-covid-19-data.-we-choose-to-evaluate-data-from-the-phase-3-data-release-week-18-october-28-2020--november-9-2020.-the-hps-is-a-20-min-online-survey-designed-to-quickly-and-efficiently-measure-the-social-and-economic-impacts-of-covid-19-on-american-households.-the-census-bureau-releases-the-hps-data-every-4-weeks.}}
 
 \hypertarget{variable-identification-and-analysis}{%
 \subsection{Variable identification and
 analysis}\label{variable-identification-and-analysis}}
 
-\hypertarget{our-sampling-frame-was-all-individuals-who-requested-mental-health-services-and-either-received-services-or-did-not-between-october-28-2021-and-november-9-2021-n-58729.-we-evaluated-the-utilization-of-services-if-mental-health-services-counseling-or-therapy-were-requested-but-not-received-from-a-mental-health-professional-at-any-time-in-the-past-four-weeks.-variables-of-interest-for-this-study-included-public-insurance-all-individuals-with-medicare-medicaid-and-veterans-affairs-va-health-insurance-private-insurance-employer-sponsored-health-insurance-insurance-purchased-from-a-health-insurance-agency-tricare-or-other-military-health-insurance-and-income-total-household-income-before-taxes-in-2019.}{%
+\hypertarget{our-sampling-frame-was-all-individuals-who-requested-mental-health-services-and-either-received-services-or-did-not-between-october-28-2021-and-november-9-2021-n-58729.-we-evaluated-utilization-of-services-as-mental-health-services-counseling-or-therapy-were-requested-but-not-received-from-a-mental-health-professional-at-any-time-in-the-past-four-weeks.-variables-of-interest-for-this-study-included-public-insurance-all-individuals-with-medicare-medicaid-and-veterans-affairs-va-health-insurance-private-insurance-employer-sponsored-health-insurance-insurance-purchased-from-a-health-insurance-agency-tricare-or-other-military-health-insurance-and-income-total-household-income-before-taxes-in-2019.}{%
 \paragraph{Our sampling frame was all individuals who requested mental
 health services and either received services or did not between October
-28, 2021, and November 9, 2021 (N= 58,729). We evaluated the utilization
-of services if mental health services (counseling or therapy) were
+28, 2021, and November 9, 2021 (N= 58,729). We evaluated utilization of
+services as ``mental health services (counseling or therapy) were
 requested but not received from a mental health professional at any time
-in the past four weeks. Variables of interest for this study included
+in the past four weeks''. Variables of interest for this study included
 public insurance (all individuals with Medicare, Medicaid, and Veterans
 Affairs (VA) health insurance), private insurance (employer-sponsored
 health insurance, insurance purchased from a health insurance agency,
 TRICARE or other military health insurance) and income (total household
 income before taxes in
-2019).}\label{our-sampling-frame-was-all-individuals-who-requested-mental-health-services-and-either-received-services-or-did-not-between-october-28-2021-and-november-9-2021-n-58729.-we-evaluated-the-utilization-of-services-if-mental-health-services-counseling-or-therapy-were-requested-but-not-received-from-a-mental-health-professional-at-any-time-in-the-past-four-weeks.-variables-of-interest-for-this-study-included-public-insurance-all-individuals-with-medicare-medicaid-and-veterans-affairs-va-health-insurance-private-insurance-employer-sponsored-health-insurance-insurance-purchased-from-a-health-insurance-agency-tricare-or-other-military-health-insurance-and-income-total-household-income-before-taxes-in-2019.}}
+2019).}\label{our-sampling-frame-was-all-individuals-who-requested-mental-health-services-and-either-received-services-or-did-not-between-october-28-2021-and-november-9-2021-n-58729.-we-evaluated-utilization-of-services-as-mental-health-services-counseling-or-therapy-were-requested-but-not-received-from-a-mental-health-professional-at-any-time-in-the-past-four-weeks.-variables-of-interest-for-this-study-included-public-insurance-all-individuals-with-medicare-medicaid-and-veterans-affairs-va-health-insurance-private-insurance-employer-sponsored-health-insurance-insurance-purchased-from-a-health-insurance-agency-tricare-or-other-military-health-insurance-and-income-total-household-income-before-taxes-in-2019.}}
 
 \hypertarget{we-conducted-descriptive-analyses-comparing-the-utilization-count-of-mental-health-services-by-insurance-type.-we-compared-the-rates-of-receiving-mental-health-services-between-public-and-private-insurance-by-state-and-income.-there-was-a-total-of-189510-missing-variables-that-were-excluded-from-this-analysis.}{%
 \paragraph{We conducted descriptive analyses comparing the utilization
@@ -190,10 +176,55 @@ were excluded from this
 analysis.}\label{we-conducted-descriptive-analyses-comparing-the-utilization-count-of-mental-health-services-by-insurance-type.-we-compared-the-rates-of-receiving-mental-health-services-between-public-and-private-insurance-by-state-and-income.-there-was-a-total-of-189510-missing-variables-that-were-excluded-from-this-analysis.}}
 
 \hypertarget{results}{%
-\section{Results}\label{results}}
+\section{\texorpdfstring{\textbf{Results}}{Results}}\label{results}}
 
-\hypertarget{figure-1.-the-bar-graoh-illustrates-the-count-and-rate-of-mental-health-services-requested-and-not-received-in-eight-income-categories.-among-those-with-public-insurance-individuals-making-less-than-25k-a-year-have-the-highest-rate-of-not-receiving-services-19.7-compared-to-other-income-levels.-although-individuals-with-private-insurance-who-make-between-100k-and-150k-a-year-have-the-highest-count-of-services-requested-and-not-received-individual-making-less-than-25k-and-up-to-34.9k-have-a-higher-rate-of-not-receiving-services-18.92-18.91-respectively.}{%
-\paragraph{Figure 1. The bar graoh illustrates the count and rate of
+\hypertarget{please-see-study-webpage-for-interactive-figures}{%
+\subparagraph{Please see study webpage for interactive
+figures}\label{please-see-study-webpage-for-interactive-figures}}
+
+\hypertarget{demographic-characteristics-for-our-study-sample-by-region-are-presented-in-table-1.-our-final-analysis-consisted-of-39778-individuals-from-four-regions-within-the-united-states.-individuals-receiving-between-100-150k-a-year-represent-19-of-our-sample.-individuals-with-private-insurance-make-up-over-50-of-our-sample.}{%
+\paragraph{Demographic characteristics for our study sample by region
+are presented in Table 1. Our final analysis consisted of 39,778
+individuals from four regions within the United States. Individuals
+receiving between 100-150k a year represent 19\% of our sample.
+Individuals with private insurance make up over 50\% of our
+sample.}\label{demographic-characteristics-for-our-study-sample-by-region-are-presented-in-table-1.-our-final-analysis-consisted-of-39778-individuals-from-four-regions-within-the-united-states.-individuals-receiving-between-100-150k-a-year-represent-19-of-our-sample.-individuals-with-private-insurance-make-up-over-50-of-our-sample.}}
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lc}
+\caption*{
+{\large Table 1. Demographic Characterisitics}
+} \\ 
+\toprule
+\textbf{Characteristic} & \textbf{N = 39,778}\textsuperscript{1} \\ 
+\midrule
+Region &  \\ 
+    Midwest & 8,272 (21\%) \\ 
+    Northeast & 5,824 (15\%) \\ 
+    South & 11,918 (30\%) \\ 
+    West & 13,764 (35\%) \\ 
+Income &  \\ 
+     25K and below & 3,947 (9.9\%) \\ 
+    100K - 149.9K & 7,456 (19\%) \\ 
+    150K - 199.9K & 3,603 (9.1\%) \\ 
+    199.9K and above & 4,187 (11\%) \\ 
+    25K - 34.9K & 3,337 (8.4\%) \\ 
+    35K - 49.9K & 4,339 (11\%) \\ 
+    50K - 74.9K & 6,979 (18\%) \\ 
+    75K - 99.9K & 5,930 (15\%) \\ 
+Insurance\_type &  \\ 
+    Both & 9,613 (24\%) \\ 
+    No Insurance & 2,641 (6.6\%) \\ 
+    Private insurance only & 21,890 (55\%) \\ 
+    Public insurance only & 5,634 (14\%) \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textsuperscript{1}n (\%)\\
+\end{minipage}
+
+\hypertarget{figure-1.-the-bar-graph-illustrates-the-count-and-rate-of-mental-health-services-requested-and-not-received-in-eight-income-categories.-among-those-with-public-insurance-individuals-making-less-than-25k-a-year-have-the-highest-rate-of-not-receiving-services-19.7-compared-to-other-income-levels.-although-individuals-with-private-insurance-who-make-between-100k-and-150k-a-year-have-the-highest-count-of-services-requested-and-not-received-individual-making-less-than-25k-and-up-to-34.9k-have-a-higher-rate-of-not-receiving-services-18.92-18.91-respectively.}{%
+\paragraph{Figure 1. The bar graph illustrates the count and rate of
 mental health services requested and not received in eight income
 categories. Among those with public insurance, individuals making less
 than 25k a year have the highest rate of not receiving services (19.7
@@ -202,65 +233,67 @@ insurance who make between 100k and 150k a year have the highest count
 of services requested and not received, individual making less than 25k
 and up to 34.9k have a higher rate of not receiving services (18.92\%,
 18.91\%
-respectively).}\label{figure-1.-the-bar-graoh-illustrates-the-count-and-rate-of-mental-health-services-requested-and-not-received-in-eight-income-categories.-among-those-with-public-insurance-individuals-making-less-than-25k-a-year-have-the-highest-rate-of-not-receiving-services-19.7-compared-to-other-income-levels.-although-individuals-with-private-insurance-who-make-between-100k-and-150k-a-year-have-the-highest-count-of-services-requested-and-not-received-individual-making-less-than-25k-and-up-to-34.9k-have-a-higher-rate-of-not-receiving-services-18.92-18.91-respectively.}}
+respectively).}\label{figure-1.-the-bar-graph-illustrates-the-count-and-rate-of-mental-health-services-requested-and-not-received-in-eight-income-categories.-among-those-with-public-insurance-individuals-making-less-than-25k-a-year-have-the-highest-rate-of-not-receiving-services-19.7-compared-to-other-income-levels.-although-individuals-with-private-insurance-who-make-between-100k-and-150k-a-year-have-the-highest-count-of-services-requested-and-not-received-individual-making-less-than-25k-and-up-to-34.9k-have-a-higher-rate-of-not-receiving-services-18.92-18.91-respectively.}}
 
-\hypertarget{figure-2.-this-scatter-plot-illustrates-the-number-of-services-that-were-requested-and-not-received-during-october-28-2021-november-9-2021.-it-can-be-seen-that-california-has-the-highest-number-of-mental-health-services-that-were-requested-and-not-received-during-the-pandemic-among-those-with-private-insurance.}{%
+\hypertarget{figure-2.-this-scatter-plot-illustrates-the-number-of-services-that-were-requested-and-not-received-during-october-28-2021-november-9-2021.-it-can-be-seen-that-california-has-the-highest-number-of-mental-health-services-that-were-requested-and-not-received-during-the-pandemic-among-those-with-private-insurance-1678-requests-227-not-received.}{%
 \paragraph{Figure 2. This scatter plot illustrates the number of
 services that were requested and not received during October 28, 2021 --
 November 9, 2021. It can be seen that California has the highest number
 of mental health services that were requested and not received during
-the pandemic among those with private
-insurance.}\label{figure-2.-this-scatter-plot-illustrates-the-number-of-services-that-were-requested-and-not-received-during-october-28-2021-november-9-2021.-it-can-be-seen-that-california-has-the-highest-number-of-mental-health-services-that-were-requested-and-not-received-during-the-pandemic-among-those-with-private-insurance.}}
+the pandemic among those with private insurance (1,678 requests, 227 not
+received).}\label{figure-2.-this-scatter-plot-illustrates-the-number-of-services-that-were-requested-and-not-received-during-october-28-2021-november-9-2021.-it-can-be-seen-that-california-has-the-highest-number-of-mental-health-services-that-were-requested-and-not-received-during-the-pandemic-among-those-with-private-insurance-1678-requests-227-not-received.}}
 
-\hypertarget{figure-3.-this-scatter-plot-illustrates-the-number-of-services-that-were-requested-and-not-received-during-october-28-2021-november-9-2021.-it-can-be-seen-that-california-has-the-highest-number-of-mental-health-services-that-were-requested-and-not-received-during-the-pandemic-among-those-with-public-insurance.}{%
+\hypertarget{figure-3.-this-scatter-plot-illustrates-the-number-of-services-that-were-requested-and-not-received-during-october-28-2021-november-9-2021.-it-can-be-seen-that-california-has-the-highest-number-of-mental-health-services-that-were-requested-and-not-received-during-the-pandemic-among-those-with-public-insurance-440-requested-64-not-received-.}{%
 \paragraph{Figure 3. This scatter plot illustrates the number of
 services that were requested and not received during October 28, 2021 --
 November 9, 2021. It can be seen that California has the highest number
 of mental health services that were requested and not received during
-the pandemic among those with public
-insurance.}\label{figure-3.-this-scatter-plot-illustrates-the-number-of-services-that-were-requested-and-not-received-during-october-28-2021-november-9-2021.-it-can-be-seen-that-california-has-the-highest-number-of-mental-health-services-that-were-requested-and-not-received-during-the-pandemic-among-those-with-public-insurance.}}
+the pandemic among those with public insurance (440 requested, 64 not
+received
+).}\label{figure-3.-this-scatter-plot-illustrates-the-number-of-services-that-were-requested-and-not-received-during-october-28-2021-november-9-2021.-it-can-be-seen-that-california-has-the-highest-number-of-mental-health-services-that-were-requested-and-not-received-during-the-pandemic-among-those-with-public-insurance-440-requested-64-not-received-.}}
 
-\hypertarget{figure-4.-this-map-depicts-the-total-rate-of-mental-health-services-requested-and-not-received-for-individuals-with-both-public-and-private-insurance-by-state.-although-california-had-the-highest-count-of-services-not-received-among-private-and-public-insurance-respectively-california-has-a-lower-rate-of-services-not-received-than-utah-14.5-oregon-15.8-oklahoma-16.2-and-vermont-14.6.}{%
+\hypertarget{figure-4.-this-map-depicts-the-total-rate-of-mental-health-services-requested-and-not-received-for-individuals-with-both-public-and-private-insurance-by-state.-although-california-had-the-highest-count-of-services-not-received-among-private-and-public-insurance-respectively-california-has-a-lower-rate-of-services-not-received-13.7-than-utah-14.5-oregon-15.8-oklahoma-16.2-and-vermont-14.6.}{%
 \paragraph{Figure 4. This map depicts the total rate of mental health
 services requested and not received for individuals with both public and
 private insurance by state. Although California had the highest count of
 services not received among private and public insurance, respectively,
-California has a lower rate of services not received than Utah (14.5\%),
-Oregon (15.8\%), Oklahoma (16.2\%), and Vermont
-(14.6\%).}\label{figure-4.-this-map-depicts-the-total-rate-of-mental-health-services-requested-and-not-received-for-individuals-with-both-public-and-private-insurance-by-state.-although-california-had-the-highest-count-of-services-not-received-among-private-and-public-insurance-respectively-california-has-a-lower-rate-of-services-not-received-than-utah-14.5-oregon-15.8-oklahoma-16.2-and-vermont-14.6.}}
+California has a lower rate of services not received (13.7\%) than Utah
+(14.5\%), Oregon (15.8\%), Oklahoma (16.2\%), and Vermont
+(14.6\%).}\label{figure-4.-this-map-depicts-the-total-rate-of-mental-health-services-requested-and-not-received-for-individuals-with-both-public-and-private-insurance-by-state.-although-california-had-the-highest-count-of-services-not-received-among-private-and-public-insurance-respectively-california-has-a-lower-rate-of-services-not-received-13.7-than-utah-14.5-oregon-15.8-oklahoma-16.2-and-vermont-14.6.}}
 
 \hypertarget{conclusion-and-summary}{%
-\section{Conclusion and Summary}\label{conclusion-and-summary}}
+\section{\texorpdfstring{\textbf{Conclusion and
+Summary}}{Conclusion and Summary}}\label{conclusion-and-summary}}
 
-\hypertarget{this-study-specifically-aimed-to-evaluate-differences-in-mental-health-utilization-among-individuals-with-private-or-public-insurance-during-the-early-months-of-the-coviid-19-pandemic.-we-have-found-that-overall-individuals-with-private-insurance-have-higher-rates-of-not-receiving-services-than-those-who-have-public-insurance.-this-is-a-surprising-finding-considering-mechanisms-within-the-private-insurance-structure-have-been-thought-to-make-healthcare-more-accessible-than-the-systemic-bureaucracy-of-medicare-and-medicaid.-these-results-indicate-the-benefit-recent-changes-to-medicaid-may-have-made-to-the-increased-access-to-services.}{%
+\hypertarget{this-study-specifically-aimed-to-evaluate-differences-in-mental-health-services-utilization-among-individuals-with-private-or-public-insurance-during-the-early-months-of-the-coviid-19-pandemic.-we-have-found-that-overall-individuals-with-private-insurance-have-higher-rates-of-not-receiving-services-than-those-who-have-public-insurance.-this-is-a-surprising-finding-considering-mechanisms-within-private-insurance-have-been-thought-to-make-healthcare-more-accessible-than-the-systemic-bureaucracy-of-medicare-and-medicaid.-these-results-indicate-the-benefits-that-recent-changes-to-medicaid-may-have-made-to-increase-access-to-services.}{%
 \paragraph{This study specifically aimed to evaluate differences in
-mental health utilization among individuals with private or public
-insurance during the early months of the COVIID-19 pandemic. We have
-found that overall, individuals with private insurance have higher rates
-of not receiving services than those who have public insurance. This is
-a surprising finding considering mechanisms within the private insurance
-structure have been thought to make healthcare more accessible than the
+mental health services utilization among individuals with private or
+public insurance during the early months of the COVIID-19 pandemic. We
+have found that overall, individuals with private insurance have higher
+rates of not receiving services than those who have public insurance.
+This is a surprising finding considering mechanisms within private
+insurance have been thought to make healthcare more accessible than the
 systemic bureaucracy of Medicare and Medicaid. These results indicate
-the benefit recent changes to Medicaid may have made to the increased
+the benefits that recent changes to Medicaid may have made to increase
 access to
-services.}\label{this-study-specifically-aimed-to-evaluate-differences-in-mental-health-utilization-among-individuals-with-private-or-public-insurance-during-the-early-months-of-the-coviid-19-pandemic.-we-have-found-that-overall-individuals-with-private-insurance-have-higher-rates-of-not-receiving-services-than-those-who-have-public-insurance.-this-is-a-surprising-finding-considering-mechanisms-within-the-private-insurance-structure-have-been-thought-to-make-healthcare-more-accessible-than-the-systemic-bureaucracy-of-medicare-and-medicaid.-these-results-indicate-the-benefit-recent-changes-to-medicaid-may-have-made-to-the-increased-access-to-services.}}
+services.}\label{this-study-specifically-aimed-to-evaluate-differences-in-mental-health-services-utilization-among-individuals-with-private-or-public-insurance-during-the-early-months-of-the-coviid-19-pandemic.-we-have-found-that-overall-individuals-with-private-insurance-have-higher-rates-of-not-receiving-services-than-those-who-have-public-insurance.-this-is-a-surprising-finding-considering-mechanisms-within-private-insurance-have-been-thought-to-make-healthcare-more-accessible-than-the-systemic-bureaucracy-of-medicare-and-medicaid.-these-results-indicate-the-benefits-that-recent-changes-to-medicaid-may-have-made-to-increase-access-to-services.}}
 
-\hypertarget{we-also-found-that-individuals-who-make-less-than-25000-a-year-have-similarly-high-rates-of-not-receiving-services-for-both-private-and-public-insurance.-this-finding-illustrates-the-disparities-that-continue-to-exist-for-individuals-whose-income-is-below-the-poverty-line.-within-this-income-bracket-private-insurance-a-proxy-for-increased-socioeconomic-status-is-not-as-protective-against-the-social-barriers-to-healthcare-as-it-is-for-individuals-in-increased-income-ranges.further-research-is-needed-to-identify-service-and-diagnosis-specific-patterns-in-mental-health-service-utilization.}{%
-\paragraph{We also found that individuals who make less than \$25,000 a
-year have similarly high rates of not receiving services for both
-private and public insurance. This finding illustrates the disparities
-that continue to exist for individuals whose income is below the poverty
-line. Within this income bracket, private insurance, a proxy for
-increased socioeconomic status, is not as protective against the social
-barriers to healthcare as it is for individuals in increased income
-ranges.Further research is needed to identify service and
+\hypertarget{additionally-we-found-that-individuals-who-make-less-than-25000-a-year-have-similarly-high-rates-of-not-receiving-services-for-both-private-and-public-insurance.-this-finding-illustrates-the-disparities-that-continue-to-exist-for-individuals-whose-income-is-below-the-poverty-line.-within-this-income-bracket-private-insurance-a-proxy-for-increased-socioeconomic-status-is-not-as-protective-against-the-social-barriers-to-healthcare-as-it-is-for-individuals-in-increased-income-ranges.-further-research-is-needed-to-identify-service-and-diagnosis-specific-patterns-in-mental-health-service-utilization.}{%
+\paragraph{Additionally, we found that individuals who make less than
+\$25,000 a year have similarly high rates of not receiving services for
+both private and public insurance. This finding illustrates the
+disparities that continue to exist for individuals whose income is below
+the poverty line. Within this income bracket, private insurance, a proxy
+for increased socioeconomic status, is not as protective against the
+social barriers to healthcare as it is for individuals in increased
+income ranges. Further research is needed to identify service and
 diagnosis-specific patterns in mental health service
-utilization.}\label{we-also-found-that-individuals-who-make-less-than-25000-a-year-have-similarly-high-rates-of-not-receiving-services-for-both-private-and-public-insurance.-this-finding-illustrates-the-disparities-that-continue-to-exist-for-individuals-whose-income-is-below-the-poverty-line.-within-this-income-bracket-private-insurance-a-proxy-for-increased-socioeconomic-status-is-not-as-protective-against-the-social-barriers-to-healthcare-as-it-is-for-individuals-in-increased-income-ranges.further-research-is-needed-to-identify-service-and-diagnosis-specific-patterns-in-mental-health-service-utilization.}}
+utilization.}\label{additionally-we-found-that-individuals-who-make-less-than-25000-a-year-have-similarly-high-rates-of-not-receiving-services-for-both-private-and-public-insurance.-this-finding-illustrates-the-disparities-that-continue-to-exist-for-individuals-whose-income-is-below-the-poverty-line.-within-this-income-bracket-private-insurance-a-proxy-for-increased-socioeconomic-status-is-not-as-protective-against-the-social-barriers-to-healthcare-as-it-is-for-individuals-in-increased-income-ranges.-further-research-is-needed-to-identify-service-and-diagnosis-specific-patterns-in-mental-health-service-utilization.}}
 
 \newpage
 
 \hypertarget{references}{%
-\section{References}\label{references}}
+\section{\texorpdfstring{\textbf{References}}{References}}\label{references}}
 
 \hypertarget{bartels-s.-j.-baggett-t.-p.-freudenreich-o.-bird-b.-l.-2020.-covid-19-emergency-reforms-in-massachusetts-to-support-behavioral-health-care-and-reduce-mortality-of-people-with-serious-mental-illness.-psychiatric-services-7110-1078-1081}{%
 \paragraph{Bartels, S. J., Baggett, T. P., Freudenreich, O., \& Bird, B.
@@ -297,44 +330,5 @@ pandemic. Health Affairs, 41(4),
 573-580.}\label{zhu-j.-m.-myers-r.-mcconnell-k.-j.-levander-x.-lin-s.-c.-2022.-trends-in-outpatient-mental-health-services-use-before-and-during-the-covid-19-pandemic-study-examines-trends-in-outpatient-mental-health-service-using-before-and-during-the-covid-19-pandemic.-health-affairs-414-573-580.}}
 
 \textbackslash end\{document\}
-
-\includegraphics{report_files/figure-latex/unnamed-chunk-23-1.pdf}
-
-\includegraphics{report_files/figure-latex/unnamed-chunk-24-1.pdf}
-
-\includegraphics{report_files/figure-latex/unnamed-chunk-25-1.pdf}
-
-\includegraphics{report_files/figure-latex/unnamed-chunk-26-1.pdf}
-
-\includegraphics{report_files/figure-latex/unnamed-chunk-29-1.pdf}
-
-\includegraphics{report_files/figure-latex/unnamed-chunk-30-1.pdf}
-
-\begin{longtable}[]{@{}lc@{}}
-\toprule()
-\textbf{Characteristic} & \textbf{N = 39,778} \\
-\midrule()
-\endhead
-Region & \\
-Midwest & 8,272 (21\%) \\
-Northeast & 5,824 (15\%) \\
-South & 11,918 (30\%) \\
-West & 13,764 (35\%) \\
-Income & \\
-25K and below & 3,947 (9.9\%) \\
-100K - 149.9K & 7,456 (19\%) \\
-150K - 199.9K & 3,603 (9.1\%) \\
-199.9K and above & 4,187 (11\%) \\
-25K - 34.9K & 3,337 (8.4\%) \\
-35K - 49.9K & 4,339 (11\%) \\
-50K - 74.9K & 6,979 (18\%) \\
-75K - 99.9K & 5,930 (15\%) \\
-Insurance\_Type & \\
-Both & 9,613 (24\%) \\
-No Insurance & 2,641 (6.6\%) \\
-Private insurance only & 21,890 (55\%) \\
-Public insurance only & 5,634 (14\%) \\
-\bottomrule()
-\end{longtable}
 
 \end{document}

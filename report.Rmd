@@ -6,6 +6,7 @@ output:
    pdf_document: default
    html_document: FALSE
 fontsize: 12pt
+indent: true
 ---
 
 ```{r setup, include=FALSE}
@@ -30,60 +31,6 @@ library(ggplot2)
 library(dplyr)
 ```
 
-
-# INTRODUCTION 
-
-#### During the COVID-19 pandemic, mental health services were disrupted, causing profound consequences for individuals in need of consistent mental health care. The pandemic exacerbated the need for mental health services which expanded an existing unmet demand. During the pandemic, studies have found the need for mental health services rose from one in ten adults requesting services for depression and anxiety to one in four adults (Zhu et al., 2022). This supports recent findings that prolonged periods of quarantine, social isolation, and work and school disruption are associated with anxiety and psychological distress (Brooks et al., 2020). 
-
-#### In addition to a shortage of mental health professionals, mental health providers needed to adjust service delivery to comply with safety protocols, which further inhibited access to care for some individuals. To meet the growing demands for mental health care the US government waived numerous regulations around the delivery of telemedicine, including regulatory barriers that would allow for delivery across state lines (Bojdani et al., 2020). However, after surveying 32 California nonprofit behavioral health agencies, Bartels et al. (2020) found that 87% lacked the equipment required to facilitate telehealth care, and of the health agencies that could continue in-person treatment, many lacked access to appropriate PPE for staff. Additionally, states had to reform policies around payment structures to allow for financial support of remote telemedicine models. Despite these attempts to mitigate the unforeseen challenges to mental health care delivery, a decrease in revenue continued to occur, resulting in mental health professionals being furloughed or terminated (Bojdani et al., 2020). 
-
-#### At the onset of the pandemic, several state and local governments issued stay-at-home orders to reduce viral spread. These orders resulted in increased emotional distress e.g., anxiety, depression, and loss of employment. Fronstin & Woodbury (2020) estimate that approximately 7.7 million workers and 6.9 million dependants lost their insurance in the United States by June 2020. Employers are the leading providers of health insurance in the United States, suggesting that newly unemployed individuals may have lost access to secure healthcare coverage. The Urban Institute estimates that about a third of individuals who loose employer-sponsored insurance will become uninsured, and just over a quarter will obtain insurance through Medicaid or the Children’s Health Insurance Program (CHIP). Considering the unprecedented loss of employment that occurred during the pandemic, the shift from employer-sponsored insurance to public insurance changed how individuals were accessing necessary mental health care. 
-
-#### The growing demand for mental health services, possible reduction in coverage, and changing delivery systems, may have decreased access to necessary mental health services during the COVID-19 pandemic. It remains unclear the extent to which these changes in the mental health services delivery system have impacted the utilization of services. Moreover, it is unclear how insurance influenced access of mental health services. Therefore, the primary aim of this study is to establish insurance-related patterns of mental healthcare utilization from October 28, 2020 – November 9, 2020. Specifically, did the type of health insurance affect access to mental health services during the COVID-19 pandemic?
-
-
-# Methods 
-## Data 
-#### We conducted a retrospective cross-sectional analysis of the U.S. Census Bureau’s Household Pulse Survey (HPS) COVID-19 data. We choose to evaluate data from the phase 3 data release, week 18 October 28, 2020- November 9, 2020. The HPS is a 20 min online survey designed to quickly and efficiently measure the social and economic impacts of the household access the United States during the COVID-19 pandemic. 
-
-## Variable identification and analysis 
-#### Our sampling frame was all individuals who requested mental health services and either received services or did not between October 28, 2021, and November 9, 2021 (N= 58,729). We evaluated the utilization of services if mental health services (counseling or therapy) were requested but not received from a mental health professional at any time in the past four weeks. Variables of interest for this study included public insurance (all individuals with Medicare, Medicaid, and Veterans Affairs (VA) health insurance), private insurance (employer-sponsored health insurance, insurance purchased from a health insurance agency, TRICARE or other military health insurance) and income (total household income before taxes in 2019). 
-
-#### We conducted descriptive analyses comparing the utilization count of mental health services by insurance type. We compared the rates of receiving mental health services between public and private insurance by state and income. There was a total of 189,510 missing variables that were excluded from this analysis.  
-
-# Results 
-
-#### Figure 1. The bar graoh illustrates the count and rate of mental health services requested and not received in eight income categories. Among those with public insurance, individuals making less than 25k a year have the highest rate of not receiving services (19.7 %) compared to other income levels. Although individuals with private insurance who make between 100k and 150k a year have the highest count of services requested and not received, individual making less than 25k and up to 34.9k have a higher rate of not receiving services (18.92%, 18.91% respectively).
-
-#### Figure 2. This scatter plot illustrates the number of services that were requested and not received during October 28, 2021 – November 9, 2021. It can be seen that California has the highest number of mental health services that were requested and not received during the pandemic among those with private insurance.
-
-#### Figure 3. This scatter plot illustrates the number of services that were requested and not received during October 28, 2021 – November 9, 2021. It can be seen that California has the highest number of mental health services that were requested and not received during the pandemic among those with public insurance.
-
-#### Figure 4. This map depicts the total rate of mental health services requested and not received for individuals with both public and private insurance by state. Although California had the highest count of services not received among private and public insurance, respectively, California has a lower rate of services not received than Utah (14.5%), Oregon (15.8%), Oklahoma (16.2%), and Vermont (14.6%).
-
-
-# Conclusion and Summary 
-
-#### This study specifically aimed to evaluate differences in mental health utilization among individuals with private or public insurance during the early months of the COVIID-19 pandemic. We have found that overall, individuals with private insurance have higher rates of not receiving services than those who have public insurance. This is a surprising finding considering mechanisms within the private insurance structure have been thought to make healthcare more accessible than the systemic bureaucracy of Medicare and Medicaid. These results indicate the benefit recent changes to Medicaid may have made to the increased access to services. 
-
-#### We also found that individuals who make less than $25,000 a year have similarly high rates of not receiving services for both private and public insurance. This finding illustrates the disparities that continue to exist for individuals whose income is below the poverty line. Within this income bracket, private insurance, a proxy for increased socioeconomic status, is not as protective against the social barriers to healthcare as it is for individuals in increased income ranges.Further research is needed to identify service and diagnosis-specific patterns in mental health service utilization. 
-
-\newpage
-
-# References
-
-#### Bartels, S. J., Baggett, T. P., Freudenreich, O., & Bird, B. L. (2020). COVID-19 emergency reforms in Massachusetts to support behavioral health care and reduce mortality of people with serious mental illness. Psychiatric Services, 71(10), 1078-1081
-
-#### Bojdani, E., Rajagopalan, A., Chen, A., Gearin, P., Olcott, W., Shankar, V., ... & DeLisi, L. E. (2020). COVID-19 pandemic: impact on psychiatric care in the United States. Psychiatry research, 289, 113069.
-
-#### Brooks SK, Webster RK, Smith LE, Woodland L, Wessely S, Greenberg N, et al. The psychological impact of quarantine and how to reduce it: rapid review of the evidence. Lancet. 2020;395(10227):912–20. [PubMed: 32112714]
-
-#### Fronstin, P., & Woodbury, S. A. (2020). How many Americans have lost jobs with employer health coverage during the pandemic?.
-
-#### Zhu, J. M., Myers, R., McConnell, K. J., Levander, X., & Lin, S. C. (2022). Trends In Outpatient Mental Health Services Use Before And During The COVID-19 Pandemic: Study examines trends in outpatient mental health service using before and during the COVID-19 pandemic. Health Affairs, 41(4), 573-580.
-
-
-\end{document}
 
 ```{r echo=FALSE}
 pulse18 <- fread("pulse2020_puf_18.csv")
@@ -304,54 +251,13 @@ if(!require(plotly)) install.packages("plotly", repos = "http://cran.us.r-projec
 library(plotly)
 ```
 
-```{r echo=FALSE, message=FALSE}
-private.insurance <- DF4 %>% 
-                     plot_ly(x = ~Total_sv_needed, y = ~num_notrec, 
-                     type = 'scatter',
-                     mode = 'markers',
-                     color = ~state,
-                     colors = "Purples")
-private.insurance <- private.insurance %>% layout(title = 'Mental health services requested and not recieved by state and private insurance ',
-                                                xaxis = list(title = 'Total services requested'),
-                                                yaxis = list(title = 'Number of services not recived'))
 
-private.insurance
 
-```
 
-```{r echo=FALSE, message= FALSE}
-public.insurance <- DF2 %>% 
-                     plot_ly(x = ~Total_sv_needed, y = ~num_notrec, 
-                     type = 'scatter',
-                     mode = 'markers',
-                     color = ~state,
-                     colors = "Reds")
-public.insurance <- public.insurance %>% layout(title = 'Mental health services requested and not recieved by state and insurance type',
-                                                xaxis = list(title = 'Total services requested'),
-                                                yaxis = list(title = 'Number of services not recived'))
 
-public.insurance
-```
 
-```{r echo=FALSE, message=FALSE}
-DF_region_Pri %>%
-  
-plot_ly(x = ~region_2, y = ~num_notrec, 
-                   type = 'bar',
-                   mode = 'markers',
-                   color = ~region_2,
-                   colors = "Blues")
-```
 
-```{r echo=FALSE, message=FALSE}
-DF_region_Pub %>%
-  
-plot_ly(x = ~region_2, y = ~num_notrec, 
-                   type = 'bar',
-                   mode = 'markers',
-                   color = ~region_2,
-                   colors = "Blues")
-```
+
 
                 
 
@@ -374,41 +280,9 @@ levels=c(" 25K and below",
 ```
 
 
-```{r echo=FALSE, message=FALSE}
-
-income.data$hover_pri <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.x, "rate"))
-income.data$hover_pub <- with(income.data, paste( income, '<br>', income.data$Notrec_rate.y, "rate"))
 
 
-income <- income.data %>%plot_ly
-income <- income %>% add_trace(x = ~income.data$income, y = ~income.data$num_notrec.x, 
-                                type = 'bar',
-                                name = 'Private Insurance',
-                                text = income.data$hover_pri,
-                                color = 'rgb(158,202,225)')
-income <- income %>% add_trace( x= ~income.data$income, y= ~income.data$num_notrec.y, 
-                                type = 'bar',
-                                name = "Public Insurance",
-                                text = income.data$hover_pub,
-                                color = 'rgb(8,48,107)')
 
-income <- income %>% layout( title = 'Mental health services requested and not recived by income and insurance type',
-                             yaxis = list( title = 'Number of services requested and not received'), barmode = 'group',
-                             xaxis = list (title = "Income"))
-                             
-income
-```
-
-
-```{r echo=FALSE, message=FALSE}
-DF_income_Pub %>%
-  
-plot_ly(x = ~income, y = ~Notrec_rate, 
-                   type = 'bar',
-                   mode = 'markers',
-                   color = ~income,
-                   colors = "Reds")
-```
 
 ```{r echo=FALSE, message=FALSE}
 large_data <- fread("world_country_and_usa_states_latitude_and_longitude_values.csv")
@@ -484,34 +358,69 @@ g <- list(
      lakecolor = toRGB('white')
 )
 ```
- 
-
-```{r echo=FALSE, message=FALSE}
-fig <- plot_geo(state_data.comp, 
-               locationmode = 'USA-states')
 
 
+# **Introduction** 
 
-fig <- fig %>% add_trace (z = ~map.data$total.needed,    
-           text = ~map.data$hover,
-       locations = ~map.data$usa_state_code,
-           color = ~map.data$total.needed,
-          colors = 'Purples' )
+#### During the COVID-19 pandemic, mental health services were disrupted, causing profound consequences for individuals in need of consistent mental health care. The pandemic exacerbated the need for mental health services which expanded an existing unmet demand. During the pandemic, studies have found the need for mental health services rose from one in ten adults requesting services for depression and anxiety to one in four adults (Zhu et al., 2022). This supports recent findings that prolonged periods of quarantine, social isolation, and work and school disruption are associated with anxiety and psychological distress (Brooks et al., 2020). 
 
-              
+#### In addition to a shortage of mental health professionals, mental health providers needed to adjust service delivery to comply with safety protocols, which further inhibited access to care for some individuals. To meet the growing demands for mental health care, the US government waived numerous regulations around the delivery of telemedicine, including regulatory barriers that would allow for delivery across state lines (Bojdani et al., 2020). However, after surveying 32 Californian nonprofit behavioral health agencies, Bartels et al. (2020) found that 87% lacked the equipment required to facilitate telehealth care, and of the health agencies that could continue in-person treatment, many lacked access to appropriate PPE for staff. Additionally, states had to reform policies around payment structures to allow for financial support of remote telemedicine models. Despite these attempts to mitigate the unforeseen challenges to mental health care delivery, a decrease in revenue continued to occur, resulting in mental health professionals being furloughed or terminated (Bojdani et al., 2020). 
+
+#### At the onset of the pandemic, several state and local governments issued stay-at-home orders to reduce viral spread. These orders resulted in increased emotional distress e.g., anxiety, depression, and loss of employment. Fronstin & Woodbury (2020) estimate that approximately 7.7 million workers and 6.9 million dependants lost their insurance in the United States by June 2020. Employers are the leading providers of health insurance in the United States, suggesting that newly unemployed individuals may have lost access to secure healthcare coverage. The Urban Institute estimates that about a third of individuals who loose employer-sponsored insurance will become uninsured, and just over a quarter will obtain insurance through Medicaid or the Children’s Health Insurance Program (CHIP). Considering the unprecedented loss of employment that occurred during the pandemic, the shift from employer-sponsored insurance to public insurance changed how individuals were accessing necessary mental health care. 
+
+#### The growing demand for mental health services, possible reduction in coverage, and changing delivery systems, may have decreased access to necessary mental health services during the COVID-19 pandemic. It remains unclear the extent to which these changes in the mental health services delivery system have impacted the utilization of services. Moreover, it is unclear how insurance influenced access of mental health services. Therefore, the primary aim of this study is to establish insurance-related patterns of mental healthcare utilization from October 28, 2020 – November 9, 2020. Specifically, did the type of health insurance affect access to mental health services during the COVID-19 pandemic?
 
 
-fig <- fig  %>% layout (title = "Rate of total Mental Health Services Requested and Not Received by state and insurance",
-         geo =g )
-         
+# **Methods** 
+## Data 
+#### We conducted a retrospective cross-sectional analysis of the U.S. Census Bureau’s Household Pulse Survey (HPS) COVID-19 data. We choose to evaluate data from the phase 3 data release, week 18 October 28, 2020- November 9, 2020. The HPS is a 20 min online survey designed to quickly and efficiently measure the social and economic impacts of COVID-19 on American households. The Census Bureau releases the HPS data every 4 weeks. 
 
-```
+## Variable identification and analysis 
+#### Our sampling frame was all individuals who requested mental health services and either received services or did not between October 28, 2021, and November 9, 2021 (N= 58,729). We evaluated utilization of services as "mental health services (counseling or therapy) were requested but not received from a mental health professional at any time in the past four weeks". Variables of interest for this study included public insurance (all individuals with Medicare, Medicaid, and Veterans Affairs (VA) health insurance), private insurance (employer-sponsored health insurance, insurance purchased from a health insurance agency, TRICARE or other military health insurance) and income (total household income before taxes in 2019). 
+
+#### We conducted descriptive analyses comparing the utilization count of mental health services by insurance type. We compared the rates of receiving mental health services between public and private insurance by state and income. There was a total of 189,510 missing variables that were excluded from this analysis.  
+
+# **Results**
+
+##### Please see study webpage for interactive figures
+#### Demographic characteristics for our study sample by region are presented in Table 1. Our final analysis consisted of 39,778 individuals from four regions within the United States. Individuals receiving between 100-150k a year represent 19% of our sample. Individuals with private insurance make up over 50% of our sample. 
 
 ```{r echo=FALSE, message=FALSE}
 library(gtsummary)
 ```
 ```{r echo=FALSE, message=FALSE}
-MHdf_2  %>% select( Region = region_2 ,Income = income, Insurance_Type =  insurance) %>% tbl_summary()
-```
+MHdf_2  %>% select( Region = region_2 ,Income = income, Insurance_type = insurance) %>% tbl_summary() %>% bold_labels() %>% as_gt() %>% gt::tab_header("Table 1. Demographic Characterisitics") %>% gt::tab_options( table.font.size = "big")
 
+```
+#### Figure 1. The bar graph illustrates the count and rate of mental health services requested and not received in eight income categories. Among those with public insurance, individuals making less than 25k a year have the highest rate of not receiving services (19.7 %) compared to other income levels. Although individuals with private insurance who make between 100k and 150k a year have the highest count of services requested and not received, individual making less than 25k and up to 34.9k have a higher rate of not receiving services (18.92%, 18.91% respectively).
+
+#### Figure 2. This scatter plot illustrates the number of services that were requested and not received during October 28, 2021 – November 9, 2021. It can be seen that California has the highest number of mental health services that were requested and not received during the pandemic among those with private insurance (1,678 requests, 227 not received).
+
+#### Figure 3. This scatter plot illustrates the number of services that were requested and not received during October 28, 2021 – November 9, 2021. It can be seen that California has the highest number of mental health services that were requested and not received during the pandemic among those with public insurance (440 requested, 64 not received ).
+
+#### Figure 4. This map depicts the total rate of mental health services requested and not received for individuals with both public and private insurance by state. Although California had the highest count of services not received among private and public insurance, respectively, California has a lower rate of services not received (13.7%) than Utah (14.5%), Oregon (15.8%), Oklahoma (16.2%), and Vermont (14.6%).
+
+
+# **Conclusion and Summary** 
+
+#### This study specifically aimed to evaluate differences in mental health services utilization among individuals with private or public insurance during the early months of the COVIID-19 pandemic. We have found that overall, individuals with private insurance have higher rates of not receiving services than those who have public insurance. This is a surprising finding considering mechanisms within private insurance have been thought to make healthcare more accessible than the systemic bureaucracy of Medicare and Medicaid. These results indicate the benefits that recent changes to Medicaid may have made to increase access to services. 
+
+#### Additionally, we found that individuals who make less than $25,000 a year have similarly high rates of not receiving services for both private and public insurance. This finding illustrates the disparities that continue to exist for individuals whose income is below the poverty line. Within this income bracket, private insurance, a proxy for increased socioeconomic status, is not as protective against the social barriers to healthcare as it is for individuals in increased income ranges. Further research is needed to identify service and diagnosis-specific patterns in mental health service utilization. 
+
+\newpage
+
+# **References** 
+
+#### Bartels, S. J., Baggett, T. P., Freudenreich, O., & Bird, B. L. (2020). COVID-19 emergency reforms in Massachusetts to support behavioral health care and reduce mortality of people with serious mental illness. Psychiatric Services, 71(10), 1078-1081
+
+#### Bojdani, E., Rajagopalan, A., Chen, A., Gearin, P., Olcott, W., Shankar, V., ... & DeLisi, L. E. (2020). COVID-19 pandemic: impact on psychiatric care in the United States. Psychiatry research, 289, 113069.
+
+#### Brooks SK, Webster RK, Smith LE, Woodland L, Wessely S, Greenberg N, et al. The psychological impact of quarantine and how to reduce it: rapid review of the evidence. Lancet. 2020;395(10227):912–20. [PubMed: 32112714]
+
+#### Fronstin, P., & Woodbury, S. A. (2020). How many Americans have lost jobs with employer health coverage during the pandemic?.
+
+#### Zhu, J. M., Myers, R., McConnell, K. J., Levander, X., & Lin, S. C. (2022). Trends In Outpatient Mental Health Services Use Before And During The COVID-19 Pandemic: Study examines trends in outpatient mental health service using before and during the COVID-19 pandemic. Health Affairs, 41(4), 573-580.
+
+
+\end{document}
 
